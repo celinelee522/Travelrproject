@@ -9,8 +9,52 @@
 import Foundation
 import UIKit
 
+let dataCenter:TravelData = TravelData()
+let fileName = "BranchData.brch"
+
+class TravelData {
+    var travels:[TravelWhere] = []
+    
+    var filePath:String { get{
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+        return documentDirectory + fileName
+        }}
+    
+    init() {
+        if NSFileManager.defaultManager().fileExistsAtPath(self.filePath) {
+            //read
+            if let unarchArray = NSKeyedUnarchiver.unarchiveObjectWithFile(self.filePath) as? [TravelWhere] {
+                travels += unarchArray
+            }
+        } else {
+            //create
+            travels += defaultData()
+        }
+        
+        
+    }
+    
+    func defaultData() -> Array<TravelWhere> {
+        
+        let japanItem1 = Item(100000, Currency(rawValue:0)!, 0, 4, 1) // 면세점에서 원화로 삼
+        let japanItem2 = Item(10000, Currency(rawValue:2)!, 1, 2, 3) // 방값계산
+        let japanItem3 = Item(1000, Currency(rawValue:2)!, 0, 3, 1) // 일본 기차탐
+        
+        let japanTravel:TravelWhere = TravelWhere("Japan", "2016.08.20-08.25" ,Budget(0,300000,Currency(rawValue:0)!), [Budget(1,100000,Currency(rawValue:2)!), Budget(1,300000,Currency(rawValue: 0)!)])
+        
+        japanTravel.items = [japanItem1,japanItem2,japanItem3]
+        
+        let travelArray = [japanTravel]
+        return travelArray
+    }
+    
+    func save(){
+        NSKeyedArchiver.archiveRootObject(self.travels, toFile: self.filePath)
+    }
+}
+
 // 환율계산 및 화폐단위심볼
-enum Currency:Int {
+enum Currency:Int{
     case KRW = 0, USD, JPY, EUR, GBP, CNY
     
     var ratio:Double { // 원화로의 환율
@@ -61,51 +105,6 @@ func setPay(n:Int) -> (String) {
 
 
 
-
-// 지출 항목 클래스
-class Item {
-    
-    var price : Double
-    var currency : Currency
-    var pay : String
-    var category : String // 나중에 radio button 이나 아이콘선택으로 대체
-    var date = NSDate() // 현재시간 받기 <- 초기선택은 현재 년,월,일이고 데이트피커로 선택해 넣기
-    var numberOfPerson : Int // 피커로 인원수 받기
-    var photo : UIImage?
-    
-    init(_ _price:Double, _ _currency:Currency, _ _pay:Int, _ _category:Int, _ _numberofperson:Int ){
-        
-        price = _price
-        currency = _currency
-        pay = setPay(_pay)
-        category = setCategory(_category)
-        numberOfPerson = _numberofperson
-        
-    }
-    
-    // 지출 항목을 입력할때의 시간을 년,월,일로 써주는 함수
-    
-    func ItemDate() -> (String){
-        
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        let itemdate:String = formatter.stringFromDate(date)
-        
-        return (itemdate)
-        
-    }
-    
-    // 각 항목의 가격을 원화로 바꿈 ( 나중에 계산 필요시 쓰기 )
-    func CurrencyToWon() -> Double {
-        return  price * currency.ratio
-    }
-}
-
-
-
-
-
-// 카드,현금 각각의 예산클래스
 class Budget {
     
     var CardOrCash:String
@@ -128,12 +127,7 @@ class Budget {
 }
 
 
-
-
-
-
-// 여행 클래스
-class TravelWhere {
+class TravelWhere:NSObject, NSCoding {
     
     var title : String
     var period : String //UIDatePicker // 기간 어떤타입?? 데이트피커에서 받아와야함
@@ -149,6 +143,31 @@ class TravelWhere {
         period = _period
         initCardBudget = _cardbudget
         initCashBudget = _cashbudget
+        
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        self.title = aDecoder.decodeObjectForKey("title") as! String
+        self.period = aDecoder.decodeObjectForKey("period") as! String
+        self.background = aDecoder.decodeObjectForKey("background") as? UIImage
+        self.plan = aDecoder.decodeObjectForKey("plan") as? String
+        self.items = aDecoder.decodeObjectForKey("items") as? [Item]
+        self.initCardBudget = aDecoder.decodeObjectForKey("initCardBudget") as! Budget
+        self.initCashBudget = aDecoder.decodeObjectForKey("initCashBudget") as! [Budget]
+        
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        
+        aCoder.encodeObject(self.title, forKey: "title")
+        aCoder.encodeObject(self.period, forKey: "period")
+        aCoder.encodeObject(self.background, forKey: "background")
+        aCoder.encodeObject(self.plan, forKey: "plan")
+        aCoder.encodeObject(self.items, forKey: "items")
+        aCoder.encodeObject(self.initCardBudget, forKey: "initCardBudget")
+        aCoder.encodeObject(self.initCashBudget, forKey: "initCashBudget")
         
     }
     
@@ -207,3 +226,65 @@ class TravelWhere {
     }
     
 }
+
+
+
+class Item:NSObject, NSCoding {
+    
+    var price : Double
+    var currency : Currency
+    var pay : String
+    var category : String // 나중에 radio button 이나 아이콘선택으로 대체
+    var date = NSDate() // 현재시간 받기 <- 초기선택은 현재 년,월,일이고 데이트피커로 선택해 넣기
+    var numberOfPerson : Int // 피커로 인원수 받기
+    var photo : UIImage?
+    
+    init(_ _price:Double, _ _currency:Currency, _ _pay:Int, _ _category:Int, _ _numberofperson:Int ){
+        
+        price = _price
+        currency = _currency
+        pay = setPay(_pay)
+        category = setCategory(_category)
+        numberOfPerson = _numberofperson
+        
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.price = aDecoder.decodeObjectForKey("price") as! Double
+        self.currency = aDecoder.decodeObjectForKey("currency") as! Currency
+        self.pay = aDecoder.decodeObjectForKey("pay") as! String
+        self.category = aDecoder.decodeObjectForKey("category") as! String
+        self.numberOfPerson = aDecoder.decodeObjectForKey("numberOfPerson") as! Int
+        self.photo = aDecoder.decodeObjectForKey("photo") as? UIImage
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.price, forKey: "price")
+        aCoder.encodeInteger(self.currency.rawValue, forKey: "currency")
+        aCoder.encodeObject(self.pay, forKey: "pay")
+        aCoder.encodeObject(self.category, forKey: "category")
+        aCoder.encodeObject(self.numberOfPerson, forKey: "numberOfPerson")
+        aCoder.encodeObject(self.photo, forKey: "photo")
+        
+    }
+    
+    // 지출 항목을 입력할때의 시간을 년,월,일로 써주는 함수
+    
+    func ItemDate() -> (String){
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        let itemdate:String = formatter.stringFromDate(date)
+        
+        return (itemdate)
+        
+    }
+    
+    // 각 항목의 가격을 원화로 바꿈 ( 나중에 계산 필요시 쓰기 )
+    func CurrencyToWon() -> Double {
+        return  price * currency.ratio
+    }
+}
+
+

@@ -8,19 +8,20 @@
 
 import UIKit
 
-var TravelList:[TravelWhere]?
+
 
 class MainViewController: UIViewController {
     
 //    var cardBudget:Budget?
 //    var cashBudget:[Budget]?
+    var money:String?
     
-    
+    @IBOutlet weak var test: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        test.text = money
 
         // Do any additional setup after loading the view.
     }

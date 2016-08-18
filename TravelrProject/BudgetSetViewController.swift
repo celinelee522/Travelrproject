@@ -251,6 +251,12 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
+    func addItem() {
+        
+        let newItem = Item()
+        
+        dataCenter.travels.append(<#T##newElement: Element##Element#>)
+    }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
@@ -289,7 +295,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -298,6 +304,9 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         
         let destVC1 = segue.destinationViewController as! MainViewController
 
+        let cardMoney = cardBudgetSet.text!
+        
+        destVC1.money = cardMoney
         
         
         //textfield 숫자로 변화해야함;;
@@ -307,7 +316,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
 //        
 //            let cashMoney = (cashBudget as NSString).doubleValue
 //        }
-        let cardMoney = (cardBudgetSet.text! as NSString).doubleValue
+        
         
 //        if budgetList
 //        let cashMoney = ( as NSString).doubleValue
@@ -318,7 +327,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
- */
+ 
     
 
 }
