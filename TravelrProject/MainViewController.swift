@@ -12,12 +12,15 @@ var TravelList:[TravelWhere]?
 
 class MainViewController: UIViewController {
     
-    var cardBudget:Budget?
+//    var cardBudget:Budget?
+//    var cashBudget:[Budget]?
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }

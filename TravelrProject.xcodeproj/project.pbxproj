@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B1706861D64020E00E2F22D /* BudgetSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1706851D64020E00E2F22D /* BudgetSetViewController.swift */; };
 		9B17068A1D6439DF00E2F22D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1706891D6439DF00E2F22D /* MainViewController.swift */; };
+		9B37800F1D648FCE00BE1149 /* BudgetPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37800E1D648FCE00BE1149 /* BudgetPopupViewController.swift */; };
 		9BAEFEF71D63F0840067F15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEFEF61D63F0840067F15D /* AppDelegate.swift */; };
 		9BAEFEF91D63F0840067F15D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEFEF81D63F0840067F15D /* ViewController.swift */; };
 		9BAEFEFC1D63F0840067F15D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BAEFEFA1D63F0840067F15D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		9B1706851D64020E00E2F22D /* BudgetSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetSetViewController.swift; sourceTree = "<group>"; };
 		9B1706891D6439DF00E2F22D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9B37800E1D648FCE00BE1149 /* BudgetPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPopupViewController.swift; sourceTree = "<group>"; };
 		9BAEFEF31D63F0840067F15D /* TravelrProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelrProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BAEFEF61D63F0840067F15D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BAEFEF81D63F0840067F15D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				9BAEFF161D63F45D0067F15D /* TitleSetViewController.swift */,
 				9B1706851D64020E00E2F22D /* BudgetSetViewController.swift */,
 				9B1706891D6439DF00E2F22D /* MainViewController.swift */,
+				9B37800E1D648FCE00BE1149 /* BudgetPopupViewController.swift */,
 			);
 			path = TravelrProject;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BAEFF171D63F45D0067F15D /* TitleSetViewController.swift in Sources */,
+				9B37800F1D648FCE00BE1149 /* BudgetPopupViewController.swift in Sources */,
 				9B1706861D64020E00E2F22D /* BudgetSetViewController.swift in Sources */,
 				9BAEFF131D63F27E0067F15D /* Travelr.swift in Sources */,
 				9B17068A1D6439DF00E2F22D /* MainViewController.swift in Sources */,

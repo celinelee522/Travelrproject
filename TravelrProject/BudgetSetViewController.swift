@@ -7,18 +7,17 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class BudgetSetViewController: UIViewController {
-
-    @IBOutlet weak var titleName: UILabel!
+class BudgetSetViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var imagePicker: UIImagePickerController! = UIImagePickerController()
+    var captureImage:UIImage!
+    var flagImageSave = false
+
     @IBOutlet weak var cardBudgetSet: UITextField!
     
-    @IBOutlet weak var cashBudgetSet: UITextField!
-    
     @IBOutlet weak var navTitle: UINavigationItem!
-    
-    @IBOutlet weak var currencySelect: UISegmentedControl!
     
     @IBOutlet weak var budget1: UILabel!
     
@@ -28,19 +27,41 @@ class BudgetSetViewController: UIViewController {
     
     @IBOutlet weak var budget4: UILabel!
     
-    @IBOutlet weak var cashCurrencyChoice: UILabel!
-    
     
     var titlename:String?
+    
+    var budget:String?
+    var selectCurrency:Int?
+    var buget:String?
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navTitle.title = titlename
-        titleName.text = titlename
         
-        
+        if let index = selectCurrency{
+            
+            if index == 0{
+                budget1.text = budget
+            }
+            
+            else if index == 1{
+                budget2.text = budget
+            }
+            
+            else if index == 2{
+                budget3.text = budget
+            }
+            
+            else if index == 3{
+                budget4.text = budget
+            }
+
+
+            
+        }
         // 숫자만 받게하는 것
         func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
             
@@ -66,38 +87,209 @@ class BudgetSetViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
-    @IBAction func currencyChoice(sender: AnyObject) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+   
+    // 현금예산팝업보여주기
+    @IBAction func shoPopup(sender: AnyObject) {
         
-        for i in 0...3{
+        let popOverVC  = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("sbPopUpID") as! BudgetPopupViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+        
+        self.navigationController?.navigationBarHidden = true // 네비 사라지게함
+    }
+    
+    
+    
+    @IBAction func popup(sender: AnyObject) {
+        let alert = UIAlertController(title: "₩", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alert.addAction(cancel)
+        
+        let ok = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
+//            print("추가")
+            let textField = alert.textFields?[0]
             
-            if currencySelect.selectedSegmentIndex == i {
-                
-                cashCurrencyChoice.text = currencySelect.titleForSegmentAtIndex(i)
-                
-            }
+//            print(textField?.text)
+            
+            self.budget1.text = textField?.text
+            
+            
+        }
+        
+        alert.addAction(ok)
+        
+        alert.addTextFieldWithConfigurationHandler{ (textField: UITextField) -> Void in
+            textField.placeholder = "금액"
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func popup2(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "$", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alert.addAction(cancel)
+        
+        let ok = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
+            //            print("추가")
+            let textField = alert.textFields?[0]
+            
+            //            print(textField?.text)
+            
+            self.budget2.text = textField?.text
+            
+            
+        }
+        
+        alert.addAction(ok)
+        
+        alert.addTextFieldWithConfigurationHandler{ (textField: UITextField) -> Void in
+            textField.placeholder = "금액"
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func popup3(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "¥", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alert.addAction(cancel)
+        
+        let ok = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
+            //            print("추가")
+            let textField = alert.textFields?[0]
+            
+            //            print(textField?.text)
+            
+            self.budget3.text = textField?.text
+            
+            
+        }
+        
+        alert.addAction(ok)
+        
+        alert.addTextFieldWithConfigurationHandler{ (textField: UITextField) -> Void in
+            textField.placeholder = "금액"
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func popup4(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "€", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alert.addAction(cancel)
+        
+        let ok = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
+            //            print("추가")
+            let textField = alert.textFields?[0]
+            
+            //            print(textField?.text)
+            
+            self.budget4.text = textField?.text
+            
+            
+        }
+        
+        alert.addAction(ok)
+        
+        alert.addTextFieldWithConfigurationHandler{ (textField: UITextField) -> Void in
+            textField.placeholder = "금액"
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBOutlet weak var imgView: UIImageView!
+    
+    
+    @IBAction func loadingImgView(sender: AnyObject) {
+
+    if(UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
+            flagImageSave = false
+        
+        
+            imagePicker.delegate = self
+            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = true
+        
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        
+    else {
+        
+        imageAlert("Photo album inaccessable", message: "Application cannot access the photo album")
+        
         }
         
     }
-
-    @IBAction func budgetAdd(sender: AnyObject) {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         
+        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
-        var budgetlist = [budget1,budget2,budget3,budget4]
-        
-            for i in 0...3{
-                
-                if currencySelect.selectedSegmentIndex == i {
-                    
-                    budgetlist[i].text = Currency(rawValue:i)!.symbol + cashBudgetSet.text!
-                }
+        if mediaType.isEqualToString(kUTTypeImage as NSString as String){
+            
+            captureImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            
+            if flagImageSave{
+                UIImageWriteToSavedPhotosAlbum(captureImage, self, nil, nil)
             }
+            
+            imgView.image = captureImage
+            
+        }
         
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
         
         
         
     }
     
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // 이미지 경고창띄우는것
+    func imageAlert(title: String, message:String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.Alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -116,14 +308,17 @@ class BudgetSetViewController: UIViewController {
 //            let cashMoney = (cashBudget as NSString).doubleValue
 //        }
         let cardMoney = (cardBudgetSet.text! as NSString).doubleValue
-        let cashMoney = (cashBudgetSet.text! as NSString).doubleValue
         
-        destVC1.cardBudget = Budget(0, cardMoney, Currency(rawValue: 0)!)
-        
+//        if budgetList
+//        let cashMoney = ( as NSString).doubleValue
+//        
+//        destVC1.cardBudget = Budget(0, cardMoney, Currency(rawValue: 0)!)
+//        destVC1.cashBudget =
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+ */
     
 
 }
