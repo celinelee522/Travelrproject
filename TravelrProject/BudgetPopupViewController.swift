@@ -77,7 +77,7 @@ class BudgetPopupViewController: UIViewController {
         }
     }
     
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,8 +90,6 @@ class BudgetPopupViewController: UIViewController {
         
         self.navigationController?.navigationBarHidden = false
         
-        destVC.budget = ChooseBudget
-        destVC.selectCurrency = ChooseCurrency
         
 //        self.navigationController?.navigationBarHidden = false
 //        
@@ -101,5 +99,5 @@ class BudgetPopupViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     
- 
+ */
 }

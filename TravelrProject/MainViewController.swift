@@ -21,7 +21,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        test.text = money
+        if let mon = money{
+            test.text = mon
+        }
+        
 
         // Do any additional setup after loading the view.
     }

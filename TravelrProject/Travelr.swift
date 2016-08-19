@@ -36,15 +36,19 @@ class TravelData {
     
     func defaultData() -> Array<TravelWhere> {
         
-        let japanItem1 = Item(100000, Currency(rawValue:0)!, 0, 4, 1) // 면세점에서 원화로 삼
-        let japanItem2 = Item(10000, Currency(rawValue:2)!, 1, 2, 3) // 방값계산
-        let japanItem3 = Item(1000, Currency(rawValue:2)!, 0, 3, 1) // 일본 기차탐
+        let Item1 = Item(100000, Currency(rawValue:0)!, 0, 4, 1) // 면세점에서 원화로 삼
+        let Item2 = Item(10000, Currency(rawValue:2)!, 1, 2, 3) // 방값계산
+        let Item3 = Item(1000, Currency(rawValue:2)!, 0, 3, 1) // 일본 기차탐
         
-        let japanTravel:TravelWhere = TravelWhere("Japan", "2016.08.20-08.25" ,Budget(0,300000,Currency(rawValue:0)!), [Budget(1,100000,Currency(rawValue:2)!), Budget(1,300000,Currency(rawValue: 0)!)])
+        let cardbudget1 = Budget(0,300000,Currency(rawValue:0)!)
+        let cashbudget1 = Budget(1,100000,Currency(rawValue:2)!)
+        let cashbudget2 = Budget(1,300000,Currency(rawValue:0)!)
         
-        japanTravel.items = [japanItem1,japanItem2,japanItem3]
+        let Travel:TravelWhere = TravelWhere("Japan", "2016.08.20-08.25" ,cardbudget1,[cashbudget1,cashbudget2])
         
-        let travelArray = [japanTravel]
+        Travel.items = [Item1,Item2,Item3]
+        
+        let travelArray = [Travel]
         return travelArray
     }
     
@@ -54,6 +58,8 @@ class TravelData {
 }
 
 // 환율계산 및 화폐단위심볼
+
+
 enum Currency:Int{
     case KRW = 0, USD, JPY, EUR, GBP, CNY
     
@@ -105,7 +111,7 @@ func setPay(n:Int) -> (String) {
 
 
 
-class Budget {
+class Budget:NSObject, NSCoding {
     
     var CardOrCash:String
     var Money:Double
@@ -114,9 +120,26 @@ class Budget {
     // 카드 예산의 경우 화폐단위를 원화로 하기
     init(_ _cardorcash:Int,_ _money:Double,_ _currency:Currency){
         
-        CardOrCash = setPay(_cardorcash)
-        Money = _money
-        BudgetCurrency = _currency
+        self.CardOrCash = setPay(_cardorcash)
+        self.Money = _money
+        self.BudgetCurrency = _currency
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        self.CardOrCash = aDecoder.decodeObjectForKey("CardOrCash") as! String
+        self.Money = aDecoder.decodeObjectForKey("Money") as! Double
+        self.BudgetCurrency = Currency(rawValue: aDecoder.decodeIntegerForKey("BudgetCurrency"))!
+       
+        
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        
+        aCoder.encodeObject(self.CardOrCash, forKey: "CardOrCash")
+        aCoder.encodeObject(self.Money, forKey: "Money")
+        aCoder.encodeInteger(self.BudgetCurrency.rawValue, forKey: "BudgetCurrency")
         
     }
     
@@ -124,6 +147,8 @@ class Budget {
     func CurrencyToWon() -> Double {
         return  Money * BudgetCurrency.ratio
     }
+    
+    
 }
 
 
@@ -137,12 +162,12 @@ class TravelWhere:NSObject, NSCoding {
     var initCardBudget:Budget
     var initCashBudget:[Budget] // 현금의 경우 여러가지 단위 받게 함 (배열로)
     
-    init(_ _title:String, _ _period:String ,_ _cardbudget:Budget,_ _cashbudget:[Budget]){
+    init(_ title:String, _ period:String ,_ initCardBudget:Budget,_ initCashBudget:[Budget]){
         
-        title  = _title
-        period = _period
-        initCardBudget = _cardbudget
-        initCashBudget = _cashbudget
+        self.title  = title
+        self.period = period
+        self.initCardBudget = initCardBudget
+        self.initCashBudget = initCashBudget
         
     }
     
@@ -154,6 +179,7 @@ class TravelWhere:NSObject, NSCoding {
         self.background = aDecoder.decodeObjectForKey("background") as? UIImage
         self.plan = aDecoder.decodeObjectForKey("plan") as? String
         self.items = aDecoder.decodeObjectForKey("items") as? [Item]
+        
         self.initCardBudget = aDecoder.decodeObjectForKey("initCardBudget") as! Budget
         self.initCashBudget = aDecoder.decodeObjectForKey("initCashBudget") as! [Budget]
         
@@ -252,7 +278,7 @@ class Item:NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         self.price = aDecoder.decodeObjectForKey("price") as! Double
-        self.currency = aDecoder.decodeObjectForKey("currency") as! Currency
+        self.currency = Currency(rawValue: aDecoder.decodeIntegerForKey("currency"))!
         self.pay = aDecoder.decodeObjectForKey("pay") as! String
         self.category = aDecoder.decodeObjectForKey("category") as! String
         self.numberOfPerson = aDecoder.decodeObjectForKey("numberOfPerson") as! Int
