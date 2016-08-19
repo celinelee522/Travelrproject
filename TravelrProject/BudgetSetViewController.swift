@@ -93,7 +93,6 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
-
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString

@@ -16,14 +16,13 @@ class MainViewController: UIViewController {
 //    var cashBudget:[Budget]?
     var money:String?
     
-    @IBOutlet weak var test: UILabel!
+    
+    @IBOutlet weak var text: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let mon = money{
-            test.text = mon
-        }
+        text.text = money
         
 
         // Do any additional setup after loading the view.
