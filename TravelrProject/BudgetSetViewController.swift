@@ -146,21 +146,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
-    @IBOutlet weak var currencySet2: UILabel!
     
-    
-    @IBOutlet weak var currencySegment2: UISegmentedControl!
-    
-    @IBAction func currencySetting2(sender: AnyObject) {
-        for i in 0...3{
-            
-            if currencySegment2.selectedSegmentIndex == i {
-                
-                currencySet2.text = currencySegment2.titleForSegmentAtIndex(i)
-                
-            }
-        }
-    }
     
     
     
@@ -204,7 +190,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
             
             var cashbudget:Budget
             let cashMoney2 = (cashBudget2 as NSString).doubleValue
-            cashbudget = Budget(1, cashMoney2, Currency(rawValue: currencySegment2.selectedSegmentIndex)!)
+            cashbudget = Budget(1, cashMoney2, Currency(rawValue: 0)!)
             newTravel.initCashBudget.append(cashbudget)
             
         }
@@ -222,11 +208,11 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         self.addTravel()
         let destVC1 = segue.destinationViewController as! MainViewController
 
-       
+        let title1 = dataCenter.travels[1].title
         let cardMoney = dataCenter.travels[0].title
         
         destVC1.money = cardMoney
-        
+        destVC1.title = title1
         
         //textfield 숫자로 변화해야함;;
 //
@@ -239,7 +225,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
 //        if budgetList
 //        let cashMoney = ( as NSString).doubleValue
 //        
-//        destVC1.cardBudget = Budget(0, cardMoney, Currency(rawValue: 0)!)
+//       destVC1.cardBudget = Budget(0, cardMoney, Currency(rawValue: 0)!)
 //        destVC1.cashBudget =
         
         // Get the new view controller using segue.destinationViewController.

@@ -15,7 +15,11 @@ class MainViewController: UIViewController {
 //    var cardBudget:Budget?
 //    var cashBudget:[Budget]?
     var money:String?
+    var title1:String?
     
+    
+  
+    @IBOutlet weak var test: UILabel!
     
     @IBOutlet weak var text: UILabel!
 
@@ -23,7 +27,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         text.text = money
-        
+        test.text = title1
 
         // Do any additional setup after loading the view.
     }

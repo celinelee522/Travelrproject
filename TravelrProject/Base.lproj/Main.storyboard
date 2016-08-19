@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -200,20 +200,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BBM-A7-PNk">
-                                <rect key="frame" x="20" y="210" width="335" height="29"/>
-                                <segments>
-                                    <segment title="₩"/>
-                                    <segment title="$"/>
-                                    <segment title="¥"/>
-                                    <segment title="€"/>
-                                    <segment title="£"/>
-                                </segments>
-                                <connections>
-                                    <action selector="currencySetting2:" destination="fpo-wh-T09" eventType="valueChanged" id="Tz5-4O-Tr7"/>
-                                    <action selector="currencySetting:" destination="fpo-wh-T09" eventType="valueChanged" id="GFh-JI-YfN"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="₩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCF-VW-GsD">
                                 <rect key="frame" x="188" y="279" width="19" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -272,9 +258,7 @@
                         <outlet property="cashBudgetSet1" destination="CSX-JE-ehG" id="uAC-0O-Ykh"/>
                         <outlet property="cashBudgetSet2" destination="yCt-7C-mZY" id="IMm-ai-F1q"/>
                         <outlet property="currencySegment" destination="XiY-Z2-DsV" id="aJw-Z7-G5O"/>
-                        <outlet property="currencySegment2" destination="BBM-A7-PNk" id="S8l-gk-O0B"/>
                         <outlet property="currencySet" destination="5fh-lP-M0s" id="dEo-FP-hXc"/>
-                        <outlet property="currencySet2" destination="CCF-VW-GsD" id="eAv-TY-bJi"/>
                         <outlet property="imgView" destination="Zkc-Jm-3dd" id="sfq-nr-RyC"/>
                         <outlet property="navTitle" destination="M1O-DJ-Cp4" id="hqt-D8-gen"/>
                     </connections>
@@ -489,17 +473,24 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLS-vh-rpZ">
+                                <rect key="frame" x="228" y="352" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="test" destination="DLS-vh-rpZ" id="iqT-Y5-kgZ"/>
                         <outlet property="text" destination="kcH-er-BfP" id="HNS-mq-Eu3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eid-i0-8HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1205.5" y="-1607.5"/>
+            <point key="canvasLocation" x="-1234.5" y="-1601.5"/>
         </scene>
     </scenes>
     <resources>
