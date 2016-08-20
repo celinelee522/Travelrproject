@@ -135,7 +135,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func currencySetting(sender: AnyObject) {
         
-        for i in 0...3{
+        for i in 0...4{
             
             if currencySegment.selectedSegmentIndex == i {
                 
@@ -150,25 +150,29 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     
     
-    @IBAction func makeTravel(sender: AnyObject) {
+    
+    
+    /* presenting 방법
+    @IBAction func done(sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true, completion: {
-        })
+        let presentingVC = self.presentingViewController as! UINavigationController
+        let listVC = presentingVC.topViewController as! TravelListTableViewController
+        
+        let newtravel = self.addingTravel()
+    
+        listVC.addNew(newtravel)
+        
+        self.navigationController?.popViewControllerAnimated(true)
         
         
     }
+    */
     
     
     
-    
-    
-    
-    func addTravel() {
-        
+    func addingTravel() -> TravelWhere {
         
         let newTravel = TravelWhere(titlename!, "20100905-20100910", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 0)!)])
-        
-        
         
         if let cardBudget = cardBudgetSet.text {
             
@@ -195,9 +199,13 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
             
         }
         
+        newTravel.background = imgView.image
         
-        dataCenter.travels.append(newTravel)
+        return newTravel
     }
+ 
+    
+    
     
     
     // MARK: - Navigation
@@ -205,28 +213,26 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        self.addTravel()
-        let destVC1 = segue.destinationViewController as! MainViewController
-
-        let title1 = dataCenter.travels[1].title
-        let cardMoney = dataCenter.travels[0].title
+        if segue.identifier == "doneUnwind" {
+            
+            
+            let destVC = segue.destinationViewController as! TravelListTableViewController
+            
+            let newTravel  = self.addingTravel()
+            
+            destVC.addNew(newTravel)
+        }
         
-        destVC1.money = cardMoney
-        destVC1.title = title1
         
-        //textfield 숫자로 변화해야함;;
+        
+//        let newtravel = self.addingTravel()
+//        let destVC = segue.destinationViewController as! TravelListTableViewController
 //
-//        
-//        
-//            let cashMoney = (cashBudget as NSString).doubleValue
-//        }
+//        destVC.addNew(newtravel)
+          
         
         
-//        if budgetList
-//        let cashMoney = ( as NSString).doubleValue
-//        
-//       destVC1.cardBudget = Budget(0, cardMoney, Currency(rawValue: 0)!)
-//        destVC1.cashBudget =
+        
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

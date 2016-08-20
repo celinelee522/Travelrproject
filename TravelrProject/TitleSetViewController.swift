@@ -29,6 +29,11 @@ class TitleSetViewController: UIViewController {
     }
     
 
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
     
     // MARK: - Navigation
 
