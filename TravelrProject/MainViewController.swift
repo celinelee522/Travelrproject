@@ -12,22 +12,21 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-//    var cardBudget:Budget?
-//    var cashBudget:[Budget]?
-    var money:String?
-    var title1:String?
+    @IBOutlet weak var cashCurrency: UILabel!
     
+    @IBOutlet weak var cashUsed1: UILabel!
+    @IBOutlet weak var cashBudget1: UILabel!
     
-  
-    @IBOutlet weak var test: UILabel!
-    
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var cashUsed2: UILabel!
+    @IBOutlet weak var cashBudget2: UILabel!
 
+    @IBOutlet weak var cardUsedWon: UILabel!
+    @IBOutlet weak var cardUsed: UILabel!
+    @IBOutlet weak var cardBudget: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        text.text = money
-        test.text = title1
+    
 
         // Do any additional setup after loading the view.
     }
