@@ -16,8 +16,10 @@ class TravelContentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var travelPeriod: UILabel!
     
-    @IBOutlet weak var testBudget: UILabel!
     
+    @IBOutlet weak var cashBudget: UILabel!
+    
+    @IBOutlet weak var cardBudget: UILabel!
     override func awakeFromNib() {
         
         super.awakeFromNib()

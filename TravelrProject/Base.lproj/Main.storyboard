@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -36,12 +36,18 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="188"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zdt-7t-2pQ" id="YLh-YJ-sAE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xp-Uv-dyQ">
-                                            <rect key="frame" x="67" y="6" width="241" height="173"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3n-kt-9dR">
+                                            <rect key="frame" x="19" y="155" width="336" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw2-rl-7VK">
                                             <rect key="frame" x="139" y="63" width="96" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -61,7 +67,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CG-us-5n0">
-                                            <rect key="frame" x="19" y="147" width="336" height="21"/>
+                                            <rect key="frame" x="19" y="132" width="336" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -70,10 +76,12 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="testBudget" destination="2CG-us-5n0" id="dbl-Oi-fbg"/>
+                                    <outlet property="cardBudget" destination="O3n-kt-9dR" id="KD7-D9-nvu"/>
+                                    <outlet property="cashBudget" destination="2CG-us-5n0" id="QcH-Xa-fXS"/>
                                     <outlet property="travelBackground" destination="2xp-Uv-dyQ" id="g1c-G6-JUG"/>
                                     <outlet property="travelPeriod" destination="OKg-P4-4aE" id="zL4-U1-cG0"/>
                                     <outlet property="travelTitle" destination="nw2-rl-7VK" id="clS-QT-YXo"/>
+                                    <segue destination="twN-R0-mDq" kind="show" id="Of5-i0-j9l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -537,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eid-i0-8HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2060.5" y="-806.5"/>
+            <point key="canvasLocation" x="-1884.5" y="-806.5"/>
         </scene>
     </scenes>
     <resources>
