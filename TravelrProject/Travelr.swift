@@ -94,7 +94,7 @@ enum Currency:Int{
 
 //category설정
 func setCategory(n:Int) -> (String) {
-    let categories:Array<String> = ["eating" ,"sleeping", "transport", "shopping", "tour", "etc"] // tour는 관광비(티켓,입장료등) <- 나중에 아이콘으로 표시할시에 img파일로 받는 것으로 바꿔줘야함
+    let categories:Array<String> = ["eating" ,"sleeping", "transport", "shopping", "etc"] // <- 나중에 아이콘으로 표시할시에 img파일로 받는 것으로 바꿔줘야함
     let category = categories[n]
     return category
 }

@@ -13,6 +13,15 @@ import UIKit
 class MainViewController: UIViewController {
     
     
+    @IBOutlet weak var eatingImage: UIImageView!
+    
+    @IBOutlet weak var shoppingImage: UIImageView!
+    
+    @IBOutlet weak var sleepingImage: UIImageView!
+    
+    @IBOutlet weak var transportImage: UIImageView!
+    
+    @IBOutlet weak var etcImage: UIImageView!
     
     @IBOutlet weak var priceSet: UITextField!
     
@@ -41,6 +50,7 @@ class MainViewController: UIViewController {
     var travelIndex:Int?
     var travelCurrencyIndex:Int?
     var payCashOrCard:Int = 0
+    var categorySelect:Int = 0
     
     
     override func viewDidLoad() {
@@ -89,6 +99,13 @@ class MainViewController: UIViewController {
             currencySegment.setTitle(dataCenter.travels[index].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
             currencySegment.setTitle(dataCenter.travels[index].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
             
+            shoppingImage.image = UIImage(named: "shopping")
+            transportImage.image = UIImage(named: "transport")
+            eatingImage.image = UIImage(named: "dining")
+            sleepingImage.image = UIImage(named:"hotel")
+            shoppingImage.image = UIImage(named: "shopping")
+            etcImage.image = UIImage(named: "etc")
+            
             
             
         }
@@ -100,9 +117,71 @@ class MainViewController: UIViewController {
         payCashOrCard = 1
     }
     
-    @IBAction func carPay(sender: AnyObject) {
+    @IBAction func cardPay(sender: AnyObject) {
         payCashOrCard = 0
     }
+    
+    
+    @IBAction func eatingCategory(sender: AnyObject) {
+        
+        categorySelect = 0
+        eatingImage.image = UIImage(named: "dining_sel")
+        shoppingImage.image = UIImage(named: "shopping")
+        sleepingImage.image = UIImage(named:"hotel")
+        transportImage.image = UIImage(named: "transport")
+        etcImage.image = UIImage(named: "etc")
+
+        
+    }
+    
+    
+    @IBAction func shoppingCategory(sender: AnyObject) {
+        
+        categorySelect = 3
+        shoppingImage.image = UIImage(named: "shopping_sel")
+        eatingImage.image = UIImage(named: "dining")
+        sleepingImage.image = UIImage(named:"hotel")
+        transportImage.image = UIImage(named: "transport")
+        etcImage.image = UIImage(named: "etc")
+        
+    }
+    
+    @IBAction func sleepingCategory(sender: AnyObject) {
+        
+        categorySelect = 1
+        sleepingImage.image = UIImage(named:"hotel_sel")
+        eatingImage.image = UIImage(named: "dining")
+        shoppingImage.image = UIImage(named:"shopping")
+        transportImage.image = UIImage(named: "transport")
+        etcImage.image = UIImage(named: "etc")
+
+    }
+    
+    @IBAction func transportCategory(sender: AnyObject) {
+        
+        categorySelect = 2
+        transportImage.image = UIImage(named: "transport_sel")
+        eatingImage.image = UIImage(named: "dining")
+        sleepingImage.image = UIImage(named:"hotel")
+        shoppingImage.image = UIImage(named: "shopping")
+        etcImage.image = UIImage(named: "etc")
+
+    }
+    
+    @IBAction func etcCategory(sender: AnyObject) {
+        
+        categorySelect = 4
+        etcImage.image = UIImage(named: "etc_sel")
+        eatingImage.image = UIImage(named: "dining")
+        sleepingImage.image = UIImage(named:"hotel")
+        transportImage.image = UIImage(named: "transport")
+        shoppingImage.image = UIImage(named: "shopping")
+
+        
+    }
+    
+    
+    
     func addingitem() -> Item {
         
         var currencyNumber:Int = 0
@@ -112,7 +191,7 @@ class MainViewController: UIViewController {
             currencyNumber = currencySegment.selectedSegmentIndex + dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.rawValue
         }
         
-        let newItem = Item(0, Currency(rawValue:currencyNumber)!, payCashOrCard, 0, 1)
+        let newItem = Item(0, Currency(rawValue:currencyNumber)!, payCashOrCard, categorySelect, 1)
         //지불수단, 카테고리 ,인원 고정되있음
         
         if let price = priceSet.text{

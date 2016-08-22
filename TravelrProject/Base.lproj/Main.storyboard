@@ -572,29 +572,39 @@
                                 <rect key="frame" x="209" y="312" width="56" height="30"/>
                                 <state key="normal" title="카드 결제"/>
                                 <connections>
-                                    <action selector="carPay:" destination="twN-R0-mDq" eventType="touchUpInside" id="bQa-C4-CtF"/>
+                                    <action selector="cardPay:" destination="twN-R0-mDq" eventType="touchUpInside" id="cfh-a4-jYq"/>
                                     <segue destination="2Ia-iE-cow" kind="show" identifier="itemAdd" id="Syt-II-2TI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00Z-oc-jLE">
                                 <rect key="frame" x="19" y="236" width="46" height="45"/>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="eatingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="pM8-4m-dsU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKE-LX-zWI">
                                 <rect key="frame" x="84" y="236" width="46" height="45"/>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="shoppingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="sqZ-ML-tKY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6O-YX-WWn">
                                 <rect key="frame" x="156" y="236" width="46" height="45"/>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sleepingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="GnJ-id-NEN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUI-yq-sDU">
                                 <rect key="frame" x="234" y="236" width="46" height="45"/>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="transportCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="lDi-kP-oT5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6n-PZ-omY">
                                 <rect key="frame" x="311" y="236" width="46" height="45"/>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="etcCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="eZc-pb-3O8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -613,7 +623,12 @@
                         <outlet property="cashUsedWon" destination="KYW-aB-pJj" id="vVt-Ip-nR8"/>
                         <outlet property="currencySegment" destination="0cp-0C-uoc" id="6xW-mA-PIq"/>
                         <outlet property="detailSet" destination="BNN-0x-nhD" id="Wzx-06-hLo"/>
+                        <outlet property="eatingImage" destination="OPY-k2-zbh" id="Urw-OY-yHm"/>
+                        <outlet property="etcImage" destination="IHg-i3-zUl" id="rSU-1o-P6t"/>
                         <outlet property="priceSet" destination="c1d-zd-BjU" id="ZIQ-gt-d5L"/>
+                        <outlet property="shoppingImage" destination="9KS-kU-qK8" id="l2b-IX-NOy"/>
+                        <outlet property="sleepingImage" destination="ZYc-an-yl9" id="WoW-Z4-Tcv"/>
+                        <outlet property="transportImage" destination="SB7-xY-GBf" id="dph-vY-6rg"/>
                         <outlet property="travelTitle" destination="Yjo-e3-rFf" id="v3f-hY-2SV"/>
                     </connections>
                 </viewController>
