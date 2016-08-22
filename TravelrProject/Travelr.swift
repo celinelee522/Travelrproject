@@ -28,29 +28,29 @@ class TravelData {
             }
         } else {
             //create
-            travels += defaultData()
+//            travels += defaultData()
         }
         
         
     }
     
-    func defaultData() -> Array<TravelWhere> {
-        
-        let Item1 = Item(100000, Currency(rawValue:0)!, 0, 4, 1) // 면세점에서 원화로 삼
-        let Item2 = Item(10000, Currency(rawValue:2)!, 1, 2, 3) // 방값계산
-        let Item3 = Item(1000, Currency(rawValue:2)!, 0, 3, 1) // 일본 기차탐
-        
-        let cardbudget1 = Budget(0,300000,Currency(rawValue:0)!)
-        let cashbudget1 = Budget(1,100000,Currency(rawValue:2)!)
-        let cashbudget2 = Budget(1,300000,Currency(rawValue:0)!)
-        
-        let Travel:TravelWhere = TravelWhere("Japan", "2016.08.20-08.25" ,cardbudget1,[cashbudget1,cashbudget2])
-        
-        Travel.items = [Item1,Item2,Item3]
-        
-        let travelArray = [Travel]
-        return travelArray
-    }
+//    func defaultData() -> Array<TravelWhere> {
+//        
+//        let Item1 = Item(100000, Currency(rawValue:0)!, 0, 4, 1) // 면세점에서 원화로 삼
+//        let Item2 = Item(10000, Currency(rawValue:2)!, 1, 2, 3) // 방값계산
+//        let Item3 = Item(1000, Currency(rawValue:2)!, 0, 3, 1) // 일본 기차탐
+//        
+//        let cardbudget1 = Budget(0,300000,Currency(rawValue:0)!)
+//        let cashbudget1 = Budget(1,100000,Currency(rawValue:2)!)
+//        let cashbudget2 = Budget(1,300000,Currency(rawValue:0)!)
+//        
+//        let Travel:TravelWhere = TravelWhere("Japan", "2016.08.20-08.25" ,cardbudget1,[cashbudget1,cashbudget2])
+//        
+//        Travel.items = [Item1,Item2,Item3]
+//        
+//        let travelArray = [Travel]
+//        return travelArray
+//    }
     
     func save(){
         NSKeyedArchiver.archiveRootObject(self.travels, toFile: self.filePath)
@@ -221,10 +221,8 @@ class TravelWhere:NSObject, NSCoding {
     // 2. 지불수단별로 아이템들 계산하여 카드쓴돈, 현금쓴돈, 카드남은돈, 현금남은돈 ( 인풋으로 기준 화폐단위 넣어주면 분류해서 아웃풋줌)
     
     func MoneyByPayCurrency(indexCurrency:Currency) -> (cardSpend:Double, cashSpend:Double, cardRemian:Double, cashRemain:Double){
-        
         var cardspend:Double = 0
         var cashspend:Double = 0
-        
         
         if let items = items{
             let carditems = items.filter({ $0.pay == "card" })

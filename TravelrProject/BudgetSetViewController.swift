@@ -147,29 +147,6 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     
-    
-    
-    
-    
-    
-    /* presenting 방법
-    @IBAction func done(sender: AnyObject) {
-        
-        let presentingVC = self.presentingViewController as! UINavigationController
-        let listVC = presentingVC.topViewController as! TravelListTableViewController
-        
-        let newtravel = self.addingTravel()
-    
-        listVC.addNew(newtravel)
-        
-        self.navigationController?.popViewControllerAnimated(true)
-        
-        
-    }
-    */
-    
-    
-    
     func addingTravel() -> TravelWhere {
         
         let newTravel = TravelWhere(titlename!, "20100905-20100910", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 0)!)])
@@ -220,6 +197,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
             
             let newTravel  = self.addingTravel()
             
+            destVC.cashCurrencyIndex = currencySegment.selectedSegmentIndex
             destVC.addNew(newTravel)
         }
         

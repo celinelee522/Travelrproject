@@ -29,14 +29,23 @@ class ItemListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    
+    
     func addNewItem(newItem:Item) {
         
-        dataCenter.travels[travelindex!].items!.append(newItem)
+        if dataCenter.travels[travelindex!].items == nil{
+            dataCenter.travels[travelindex!].items = [newItem]
+        }
+        else {
+            dataCenter.travels[travelindex!].items!.append(newItem)
+        }
         
         dataCenter.save()
         
         self.tableView.reloadData()
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,6 +62,7 @@ class ItemListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
         if let itemsNumber = items{
             let number = itemsNumber.count
             return number

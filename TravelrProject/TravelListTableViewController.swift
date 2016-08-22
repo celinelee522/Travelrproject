@@ -9,6 +9,8 @@
 import UIKit
 
 class TravelListTableViewController: UITableViewController {
+    
+    var cashCurrencyIndex:Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,10 +130,10 @@ class TravelListTableViewController: UITableViewController {
             let indexOfTravel = selectedIndex.row
             let travelTitle = dataCenter.travels[selectedIndex.row].title
             
-            
             //목적지 뷰 컨트롤러에 선택된 오브젝트 전달
             destVC.travelIndex = indexOfTravel
             destVC.travelName = travelTitle
+            destVC.travelCurrencyIndex = cashCurrencyIndex
         }
         
         

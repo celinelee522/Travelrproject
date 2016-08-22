@@ -488,8 +488,7 @@
                                 <rect key="frame" x="172" y="312" width="30" height="30"/>
                                 <state key="normal" title="결제"/>
                                 <connections>
-                                    <action selector="addAction:" destination="twN-R0-mDq" eventType="touchUpInside" id="sQ8-pI-uTf"/>
-                                    <segue destination="2Ia-iE-cow" kind="show" identifier="itemSegue" id="XOX-bH-Did"/>
+                                    <segue destination="2Ia-iE-cow" kind="show" identifier="itemAdd" id="XOX-bH-Did"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cahs2" translatesAutoresizingMaskIntoConstraints="NO" id="3Gv-MB-PnU">
@@ -812,6 +811,6 @@
         <image name="traveltitle" width="5760" height="3840"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ko5-zp-veJ"/>
+        <segue reference="XOX-bH-Did"/>
     </inferredMetricsTieBreakers>
 </document>

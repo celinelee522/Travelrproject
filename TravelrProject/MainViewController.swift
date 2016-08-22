@@ -39,27 +39,30 @@ class MainViewController: UIViewController {
     
     var travelName:String?
     var travelIndex:Int?
+    var travelCurrencyIndex:Int?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let index = travelIndex{
-            let currentTravel = dataCenter.travels[index]
-            let indexCurrency = currentTravel.initCashBudget[0].BudgetCurrency
+            
+            
+            let indexCurrency = dataCenter.travels[index].initCashBudget[0].BudgetCurrency
             let indexCurrencyWon = Currency(rawValue: 0)!
+            
             cashCurrency.text = indexCurrency.symbol
             cardCurrency.text = indexCurrency.symbol
-            cashUsed1.text = String(currentTravel.MoneyByPayCurrency(indexCurrency).cashSpend)
-            cashUsedWon.text = String(currentTravel.MoneyByPayCurrency(indexCurrencyWon).cashSpend)
-            cashBudget1.text = String(currentTravel.initCashBudget[0].Money)
-            cashBudget2.text = String(currentTravel.initCashBudget[1].Money)
-            cardUsed.text = String(currentTravel.MoneyByPayCurrency(indexCurrency).cardSpend)
-            cardUsedWon.text = String(currentTravel.MoneyByPayCurrency(indexCurrencyWon).cardSpend)
-            cardBudget.text = String(currentTravel.initCardBudget.Money)
+            cashUsed1.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrency).cashSpend)
+            cashUsedWon.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrencyWon).cashSpend)
+            cashBudget1.text = String(dataCenter.travels[index].initCashBudget[0].Money)
+            cashBudget2.text = String(dataCenter.travels[index].initCashBudget[1].Money)
+            cardUsed.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrency).cardSpend)
+            cardUsedWon.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrencyWon).cardSpend)
+            cardBudget.text = String(dataCenter.travels[index].initCardBudget.Money)
             
-            currencySegment.setTitle(currentTravel.initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
-            currencySegment.setTitle(currentTravel.initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
+            currencySegment.setTitle(dataCenter.travels[index].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
+            currencySegment.setTitle(dataCenter.travels[index].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
             
             
             
@@ -71,25 +74,33 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func addAction(sender: AnyObject) {
-        if let price = priceSet.text{
-            let newItem = Item((price as NSString).doubleValue, Currency(rawValue:currencySegment.selectedSegmentIndex)!, 0, 1, 1) // 우선 지불수단 카테고리 인원 고정함
-            newItem.detail = detailSet.text!
-            if var items = dataCenter.travels[travelIndex!].items{
-                items.append(newItem)
-            }
-        dataCenter.save()
-        }
-     
+    
+    
+    func addingitem() -> Item {
         
+        // 세그먼트 인덱스 설정 바꿔야함
+        let currencyNumber = currencySegment.selectedSegmentIndex + dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.rawValue
+        let newItem = Item(0, Currency(rawValue:currencyNumber)!, 0, 0, 1)
+        //지불수단, 카테고리 ,인원 고정되있음
+        
+        if let price = priceSet.text{
+            newItem.price = (price as NSString).doubleValue
+            newItem.detail = detailSet.text!
+            
+        }
+       
+        return newItem
     }
+
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+    
     
     // MARK: - Navigation
 
@@ -109,6 +120,26 @@ class MainViewController: UIViewController {
             }//이제 아이템 뿌려줘야함
             
         }
+        
+        
+        if segue.identifier == "itemAdd"{
+            
+            
+            let destVC = segue.destinationViewController as! ItemListTableViewController
+            
+            destVC.travelindex = travelIndex
+            let new = self.addingitem()
+            destVC.addNewItem(new)
+            destVC.travelTitle = travelName
+            if let index = travelIndex{
+                destVC.items = dataCenter.travels[index].items
+            }
+            
+            
+            
+        }
+        
+        
         
         
 
