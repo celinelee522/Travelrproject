@@ -225,10 +225,8 @@ class MainViewController: UIViewController {
             
             
             destVC.travelTitle = travelName
-            if let index = travelIndex{
-                destVC.items = dataCenter.travels[index].items
-                destVC.travelindex = travelIndex
-            }//이제 아이템 뿌려줘야함
+            destVC.travelindex = travelIndex
+            
             
         }
         
@@ -242,9 +240,6 @@ class MainViewController: UIViewController {
             let new = self.addingitem()
             destVC.addNewItem(new)
             destVC.travelTitle = travelName
-            if let index = travelIndex{
-                destVC.items = dataCenter.travels[index].items
-            }
             
             
             
