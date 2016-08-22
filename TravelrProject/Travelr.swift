@@ -104,7 +104,7 @@ func setCategory(n:Int) -> (String) {
 
 //card,cash 설정
 func setPay(n:Int) -> (String) {
-    let pays:Array<String> = ["card" ,"cash"]
+    let pays:Array<String> = ["card" , "cash"]
     let pay = pays[n]
     return pay
 }

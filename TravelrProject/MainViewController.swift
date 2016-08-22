@@ -40,10 +40,35 @@ class MainViewController: UIViewController {
     var travelName:String?
     var travelIndex:Int?
     var travelCurrencyIndex:Int?
+    var payCashOrCard:Int = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        travelTitle.title = travelName
+        
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.budgetView()
+        priceSet.text = ""
+        detailSet.text = ""
+    }
+    
+    
+    
+    @IBAction func toMainView(unwind:UIStoryboardSegue){
+    }
+    
+    
+    func budgetView() {
         
         if let index = travelIndex{
             
@@ -68,19 +93,26 @@ class MainViewController: UIViewController {
             
         }
         
-        travelTitle.title = travelName
         
-        
-
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func cashPay(sender: AnyObject) {
+        payCashOrCard = 1
+    }
     
+    @IBAction func carPay(sender: AnyObject) {
+        payCashOrCard = 0
+    }
     func addingitem() -> Item {
         
+        var currencyNumber:Int = 0
         // 세그먼트 인덱스 설정 바꿔야함
-        let currencyNumber = currencySegment.selectedSegmentIndex + dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.rawValue
-        let newItem = Item(0, Currency(rawValue:currencyNumber)!, 0, 0, 1)
+        if currencySegment.selectedSegmentIndex == 0 {
+            
+            currencyNumber = currencySegment.selectedSegmentIndex + dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.rawValue
+        }
+        
+        let newItem = Item(0, Currency(rawValue:currencyNumber)!, payCashOrCard, 0, 1)
         //지불수단, 카테고리 ,인원 고정되있음
         
         if let price = priceSet.text{

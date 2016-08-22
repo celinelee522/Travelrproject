@@ -149,7 +149,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     func addingTravel() -> TravelWhere {
         
-        let newTravel = TravelWhere(titlename!, "20100905-20100910", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 0)!)])
+        let newTravel = TravelWhere(titlename!, "20100905-20100910", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 1)!)])
         
         if let cardBudget = cardBudgetSet.text {
             
