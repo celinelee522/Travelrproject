@@ -1,17 +1,26 @@
 //
-//  TravelListTableViewController.swift
+//  ItemListTableViewController.swift
 //  TravelrProject
 //
-//  Created by 이우재 on 2016. 8. 19..
+//  Created by 이우재 on 2016. 8. 21..
 //  Copyright © 2016년 LEE. All rights reserved.
 //
 
 import UIKit
 
-class TravelListTableViewController: UITableViewController {
+class ItemListTableViewController: UITableViewController {
+
+    @IBOutlet weak var travelNavibar: UINavigationItem!
+    
+    var items:[Item]?
+    var travelTitle:String?
+    var travelindex:Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        travelNavibar.title = travelTitle
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -20,29 +29,14 @@ class TravelListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    
-    //여행추가 및 저장 하여 테이블뷰 다시 보여주는 함수
-    func addNew(newTravel:TravelWhere) {
+    func addNewItem(newItem:Item) {
         
-        dataCenter.travels.append(newTravel)
+        dataCenter.travels[travelindex!].items!.append(newItem)
         
         dataCenter.save()
         
         self.tableView.reloadData()
     }
-    
-    override func viewWillAppear(animated: Bool)
-    {
-        self.navigationController?.navigationBarHidden = false
-    }
-    
-    
-    @IBAction func toTravelList(unwind:UIStoryboardSegue){
-        
-    }
-    
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,28 +47,42 @@ class TravelListTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataCenter.travels.count
+        if let itemsNumber = items{
+            let number = itemsNumber.count
+            return number
+        }
+        
+        return 0
     }
 
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("itemidentifier", forIndexPath: indexPath)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("travelListView", forIndexPath: indexPath) as! TravelContentTableViewCell
-
-        let travelItem = dataCenter.travels[indexPath.row]
+        if let itemlist = items{
+            
+            
+            cell.detailTextLabel!.text = itemlist[indexPath.row].category
+            
+   
+        }
         
-        cell.travelTitle.text = travelItem.title
-        cell.travelPeriod.text = travelItem.period
-        cell.cashBudget.text = "현금 : \(String(travelItem.initCashBudget[0].Money)) / \(String(travelItem.initCashBudget[1].Money))"
-        cell.cardBudget.text = "카드 : \(String(travelItem.initCardBudget.Money))"
-        cell.travelBackground.image = travelItem.background
+        
         return cell
+        
+        
+        
+        // Configure the cell...
+
+        
     }
- 
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -111,33 +119,14 @@ class TravelListTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        
-        if segue.identifier == "mainSegue" {
-            //목적지 뷰 컨트롤러 확보
-            let destVC = segue.destinationViewController as! MainViewController
-            
-            //테이블 뷰에서 선택된 오브젝트 확보
-            let selectedIndex:NSIndexPath = self.tableView.indexPathForSelectedRow!
-            
-            let indexOfTravel = selectedIndex.row
-            let travelTitle = dataCenter.travels[selectedIndex.row].title
-            
-            
-            //목적지 뷰 컨트롤러에 선택된 오브젝트 전달
-            destVC.travelIndex = indexOfTravel
-            destVC.travelName = travelTitle
-        }
-        
-        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }

@@ -264,6 +264,7 @@ class Item:NSObject, NSCoding {
     var date = NSDate() // 현재시간 받기 <- 초기선택은 현재 년,월,일이고 데이트피커로 선택해 넣기
     var numberOfPerson : Int // 피커로 인원수 받기
     var photo : UIImage?
+    var detail : String?
     
     init(_ _price:Double, _ _currency:Currency, _ _pay:Int, _ _category:Int, _ _numberofperson:Int ){
         

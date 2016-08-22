@@ -135,7 +135,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func currencySetting(sender: AnyObject) {
         
-        for i in 0...4{
+        for i in 0...3{
             
             if currencySegment.selectedSegmentIndex == i {
                 
@@ -186,7 +186,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
             
             var cashbudget:[Budget] = []
             let cashMoney1 = (cashBudget1 as NSString).doubleValue
-            cashbudget.append(Budget(1, cashMoney1, Currency(rawValue: currencySegment.selectedSegmentIndex)!))
+            cashbudget.append(Budget(1, cashMoney1, Currency(rawValue: currencySegment.selectedSegmentIndex + 1)!))
             newTravel.initCashBudget = cashbudget
         }
         
