@@ -45,7 +45,13 @@ class ItemListTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    
+    func deleteItem(index:Int) {
+        dataCenter.travels[travelindex!].items!.removeAtIndex(index)
+        
+        dataCenter.save()
+        
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,6 +99,16 @@ class ItemListTableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .Normal, title: "delete") { action, index in
+            self.deleteItem(index.row)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete]
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -106,14 +122,13 @@ class ItemListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            dataCenter.travels[travelindex!].items!.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     */
-
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
