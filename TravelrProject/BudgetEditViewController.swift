@@ -1,20 +1,20 @@
 //
-//  BudgetSetViewController.swift
+//  BudgetEditViewController.swift
 //  TravelrProject
 //
-//  Created by 이우재 on 2016. 8. 17..
+//  Created by 이우재 on 2016. 8. 23..
 //  Copyright © 2016년 LEE. All rights reserved.
 //
 
 import UIKit
 import MobileCoreServices
 
-class BudgetSetViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate {
-    
+class BudgetEditViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate {
+
     var imagePicker: UIImagePickerController! = UIImagePickerController()
     var captureImage:UIImage!
     var flagImageSave = false
-
+    
     @IBOutlet weak var cardBudgetSet: UITextField!
     
     @IBOutlet weak var cashBudgetSet1: UITextField!
@@ -28,21 +28,33 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBOutlet weak var dateText2: UITextField!
     
+    var travelIndex:Int?
     
     var titlename:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let travelInitial = dataCenter.travels[travelIndex!]
+        
+        cardBudgetSet.text = String(travelInitial.initCardBudget.Money)
+        cashBudgetSet1.text = String(travelInitial.initCashBudget[0].Money)
+        cashBudgetSet2.text = String(travelInitial.initCashBudget[1].Money)
+        currencySegment.selectedSegmentIndex = travelInitial.initCashBudget[0].BudgetCurrency.rawValue - 1
+        currencySet.text = currencySegment.titleForSegmentAtIndex(currencySegment.selectedSegmentIndex)
+        dateText1.text = travelInitial.periodStart
+        dateText2.text = travelInitial.periodEnd
+        imgView.image = travelInitial.background
+        
         dateText1.delegate = self
         dateText2.delegate = self
         
         navTitle.title = titlename
         
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -87,38 +99,37 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         self.view.endEditing(true)
     }
     
-
-    func textFieldDidBeginEditing(textField: UITextField) {
-        textField.resignFirstResponder()
-    }
+    
+    
+    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
-
+    
     
     @IBOutlet weak var imgView: UIImageView!
     
     
     @IBAction func loadingImgView(sender: AnyObject) {
-
-    if(UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
+        
+        if(UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
             flagImageSave = false
-        
-        
+            
+            
             imagePicker.delegate = self
             imagePicker.sourceType = .PhotoLibrary
             imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.allowsEditing = true
-        
+            
             presentViewController(imagePicker, animated: true, completion: nil)
         }
-        
-    else {
-        
-        imageAlert("Photo album inaccessable", message: "Application cannot access the photo album")
-        
+            
+        else {
+            
+            imageAlert("Photo album inaccessable", message: "Application cannot access the photo album")
+            
         }
         
     }
@@ -177,16 +188,15 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     
-    func addingTravel() -> TravelWhere {
+    func editingTravel() {
         
-        let newTravel = TravelWhere(titlename!, "날짜", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 1)!)])
         
         if let cardBudget = cardBudgetSet.text {
             
             var cardbudget:Budget
             let cardMoney = (cardBudget as NSString).doubleValue
             cardbudget = Budget(0, cardMoney, Currency(rawValue: 0)!)
-            newTravel.initCardBudget = cardbudget
+            dataCenter.travels[travelIndex!].initCardBudget = cardbudget
         }
         
         if let cashBudget1 = cashBudgetSet1.text{
@@ -194,7 +204,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
             var cashbudget:[Budget] = []
             let cashMoney1 = (cashBudget1 as NSString).doubleValue
             cashbudget.append(Budget(1, cashMoney1, Currency(rawValue: currencySegment.selectedSegmentIndex + 1)!))
-            newTravel.initCashBudget = cashbudget
+            dataCenter.travels[travelIndex!].initCashBudget = cashbudget
         }
         
         if let cashBudget2 = cashBudgetSet2.text{
@@ -202,53 +212,42 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
             var cashbudget:Budget
             let cashMoney2 = (cashBudget2 as NSString).doubleValue
             cashbudget = Budget(1, cashMoney2, Currency(rawValue: 0)!)
-            newTravel.initCashBudget.append(cashbudget)
+            dataCenter.travels[travelIndex!].initCashBudget.append(cashbudget)
             
         }
         
-        newTravel.background = imgView.image
-        newTravel.periodStart = dateText1.text!
-        newTravel.periodEnd = dateText2.text!
-        newTravel.period = newTravel.periodStart! + " - " + newTravel.periodEnd!
+        dataCenter.travels[travelIndex!].background = imgView.image
+        dataCenter.travels[travelIndex!].periodStart = dateText1.text!
+        dataCenter.travels[travelIndex!].periodEnd = dateText2.text!
         
-        return newTravel
+        dataCenter.travels[travelIndex!].period = dateText1.text! + " - " + dateText2.text!
+        
     }
- 
+    
     
     
     
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "doneUnwind" {
+        if segue.identifier == "budgetEditSegue" {
             
             
-            let destVC = segue.destinationViewController as! TravelListTableViewController
+            self.editingTravel()
             
-            let newTravel  = self.addingTravel()
+            dataCenter.save()
+
             
-            destVC.cashCurrencyIndex = currencySegment.selectedSegmentIndex
-            destVC.addNew(newTravel)
         }
-        
-        
-        
-//        let newtravel = self.addingTravel()
-//        let destVC = segue.destinationViewController as! TravelListTableViewController
-//
-//        destVC.addNew(newtravel)
-          
-        
-        
         
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
- 
     
-
+    
+    
 }

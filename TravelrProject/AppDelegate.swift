@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let lotteURL = NSURL(string: "http://api.fixer.io/latest?symbols=USD,KRW")
+        
+        do {
+            let jsonData =  try NSData(contentsOfURL:lotteURL!)
+            //print(jsonString)
+            let jsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            print(jsonDictionary)
+        } catch {
+            
+        }
+
+    
         return true
     }
 

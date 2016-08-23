@@ -59,19 +59,6 @@ class ItemListTableViewController: UITableViewController {
         }
     }
     
-    func addNewItem(newItem:Item) {
-        
-        if dataCenter.travels[travelindex!].items == nil{
-            dataCenter.travels[travelindex!].items = [newItem]
-        }
-        else {
-            dataCenter.travels[travelindex!].items!.append(newItem)
-        }
-        
-        dataCenter.save()
-        
-        self.tableView.reloadData()
-    }
     
 
     override func didReceiveMemoryWarning() {
@@ -124,20 +111,6 @@ class ItemListTableViewController: UITableViewController {
         
     }
     
-//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//        let edit = UITableViewRowAction(style: .Default, title: "EDIT") { action, index in
-//            print("more button tapped")
-//        }
-//        edit.backgroundColor = UIColor.blueColor()
-//        
-//        
-//        let delete = UITableViewRowAction(style: .Default, title: "DELETE") { action, index in
-//            print("share button tapped")
-//        }
-//        delete.backgroundColor = UIColor.redColor()
-//        
-//        return [delete, edit]
-//    }
 
     /*
     // Override to support conditional editing of the table view.

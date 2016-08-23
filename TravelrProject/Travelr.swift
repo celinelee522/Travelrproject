@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let dataCenter:TravelData = TravelData()
-let fileName = "BranchData.brch"
+let fileName = "BranchData.csv"
 
 class TravelData {
     var travels:[TravelWhere] = []
@@ -88,6 +88,39 @@ enum Currency:Int{
             }
         }
     }
+    
+    
+    
+    func refreshCurrency() {
+        let lotteURL = NSURL(string: "http://api.fixer.io/latest?symbols=USD,KRW")
+        
+        do {
+            let jsonData =  try NSData(contentsOfURL:lotteURL!)
+            //print(jsonString)
+            let jsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            print(jsonDictionary)
+//            print(jsonDictionary["teamName"])
+//            guard let teamName = jsonDictionary["teamName"] as? String else {
+//                return
+//            }
+//            
+//            let jsonHitters = jsonDictionary["hitters"] as! Array<Dictionary<String,String>>
+//            var hitterObjArray:[Hitter] = []
+//            for hitter in jsonHitters {
+//                let newHitter = Hitter(name:hitter["name"]!)
+//                newHitter.average = Double(hitter["average"]!)!
+//                hitterObjArray += [newHitter]
+//            }
+//            
+//            hitters[teamName] = hitterObjArray
+        } catch {
+            
+        }
+
+    }
+    
+    
+    
 }
 
 
@@ -156,6 +189,8 @@ class TravelWhere:NSObject, NSCoding {
     
     var title : String
     var period : String //UIDatePicker // 기간 어떤타입?? 데이트피커에서 받아와야함
+    var periodStart:String?
+    var periodEnd:String?
     var background : UIImage?
     var plan : String?
     var items : [Item]?
@@ -182,6 +217,8 @@ class TravelWhere:NSObject, NSCoding {
         
         self.initCardBudget = aDecoder.decodeObjectForKey("initCardBudget") as! Budget
         self.initCashBudget = aDecoder.decodeObjectForKey("initCashBudget") as! [Budget]
+        self.periodStart = aDecoder.decodeObjectForKey("periodStart") as? String
+        self.periodEnd = aDecoder.decodeObjectForKey("periodEnd") as? String
         
     }
     
@@ -194,6 +231,8 @@ class TravelWhere:NSObject, NSCoding {
         aCoder.encodeObject(self.items, forKey: "items")
         aCoder.encodeObject(self.initCardBudget, forKey: "initCardBudget")
         aCoder.encodeObject(self.initCashBudget, forKey: "initCashBudget")
+        aCoder.encodeObject(self.periodStart, forKey: "plan")
+        aCoder.encodeObject(self.periodEnd, forKey: "plan")
         
     }
     

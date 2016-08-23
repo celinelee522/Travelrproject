@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var eatingImage: UIImageView!
@@ -53,6 +53,11 @@ class MainViewController: UIViewController {
     var categorySelect:Int = 0
     
     
+    @IBAction func toMainAfterEdit(unwind:UIStoryboardSegue){
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +70,14 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func payCard(sender: AnyObject) {
+        
+        
+        
+        
+    }
+    @IBAction func payCash(sender: AnyObject) {
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.budgetView()
@@ -114,11 +127,20 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func cashPay(sender: AnyObject) {
+        self.detailSet.resignFirstResponder()
         payCashOrCard = 1
+        let new = self.addingitem()
+        self.addNewItem(new)
+        self.budgetView()
+        
     }
     
     @IBAction func cardPay(sender: AnyObject) {
+        self.detailSet.resignFirstResponder()
         payCashOrCard = 0
+        let new = self.addingitem()
+        self.addNewItem(new)
+        self.budgetView()
     }
     
     
@@ -186,6 +208,20 @@ class MainViewController: UIViewController {
         
     }
     
+    func addNewItem(newItem:Item) {
+        
+        if dataCenter.travels[travelIndex!].items == nil{
+            dataCenter.travels[travelIndex!].items = [newItem]
+        }
+        else {
+            dataCenter.travels[travelIndex!].items!.append(newItem)
+        }
+        
+        dataCenter.save()
+        
+    }
+    
+    
     
     
     func addingitem() -> Item {
@@ -243,24 +279,34 @@ class MainViewController: UIViewController {
             let destVC = segue.destinationViewController as! ItemListTableViewController
             
             destVC.travelindex = travelIndex
-            let new = self.addingitem()
-            destVC.addNewItem(new)
+            
+            
             destVC.travelTitle = travelName
             
             
             
         }
         
+        if segue.identifier == "budgetEditSegue"{
+            
+            let destVC = segue.destinationViewController as! BudgetEditViewController
+            
+            destVC.travelIndex = travelIndex
+            destVC.titlename = travelName
+            
         
         
+        }
         
-
-        
-        
+              
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.resignFirstResponder()
+    }
 
 }
