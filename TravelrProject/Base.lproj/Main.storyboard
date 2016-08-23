@@ -276,9 +276,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cahs2" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-up-B3r">
-                                <rect key="frame" x="20" y="114" width="111" height="83"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cahs2" translatesAutoresizingMaskIntoConstraints="NO" id="5cP-RD-J2i">
                                 <rect key="frame" x="20" y="221" width="111" height="83"/>
                             </imageView>
@@ -302,6 +299,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cahs2" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-up-B3r">
+                                <rect key="frame" x="20" y="114" width="111" height="83"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
