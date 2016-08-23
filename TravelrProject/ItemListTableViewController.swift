@@ -31,16 +31,16 @@ class ItemListTableViewController: UITableViewController {
     
     func getCategory(input:String) -> String {
         
-        if input == "0" {
+        if input == "eating" {
             return "dining"
         }
-        else if input == "1" {
+        else if input == "sleeping" {
             return "hotel"
         }
-        else if input == "2" {
+        else if input == "transport" {
             return "transport"
         }
-        else if input == "3" {
+        else if input == "shopping" {
             return "shopping"
         }
         else {
@@ -51,7 +51,7 @@ class ItemListTableViewController: UITableViewController {
     
     func getPay(input:String) -> String {
         
-        if input == "0" {
+        if input == "card" {
             return "card"
         }
         else {
@@ -101,7 +101,7 @@ class ItemListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("itemiList", forIndexPath: indexPath) as! ItemListTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("itemList", forIndexPath: indexPath) as! ItemListTableViewCell
         
         if let itemlist = dataCenter.travels[travelindex!].items{
             

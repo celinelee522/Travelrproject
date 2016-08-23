@@ -24,12 +24,18 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var navTitle: UINavigationItem!
     
     
+    @IBOutlet weak var dateText1: UITextField!
+    
+    @IBOutlet weak var dateText2: UITextField!
+    
+    
     var titlename:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initializeTextFields()
+        dateText1.delegate = self
+        dateText2.delegate = self
         
         navTitle.title = titlename
         
@@ -47,18 +53,41 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         self.navigationController?.navigationBarHidden = false
     }
     
-    func initializeTextFields() {
-        cardBudgetSet.delegate = self
-        cardBudgetSet.keyboardType = UIKeyboardType.NumberPad
-        
-        cashBudgetSet1.delegate = self
-        cashBudgetSet1.keyboardType = UIKeyboardType.NumberPad
-        
-        cashBudgetSet2.delegate = self
-        cashBudgetSet2.keyboardType = UIKeyboardType.NumberPad
-        
-        
+    //date picker
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        let datePicker1 = UIDatePicker()
+        let datePicker2 = UIDatePicker()
+        dateText1.inputView = datePicker1
+        dateText2.inputView = datePicker2
+        datePicker1.addTarget(self, action: #selector(BudgetSetViewController.datePickerChanged1(_:)), forControlEvents: .ValueChanged)
+        datePicker2.addTarget(self, action: #selector(BudgetSetViewController.datePickerChanged2(_:)), forControlEvents: .ValueChanged)
     }
+    
+    
+    func datePickerChanged1(sender: UIDatePicker) {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        dateText1.text = formatter.stringFromDate(sender.date)
+    }
+    
+    func datePickerChanged2(sender: UIDatePicker) {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        dateText2.text = formatter.stringFromDate(sender.date)
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func closeKeyBoard() {
+        self.view.endEditing(true)
+    }
+    
+
     
     
     
@@ -149,7 +178,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     func addingTravel() -> TravelWhere {
         
-        let newTravel = TravelWhere(titlename!, "20100905-20100910", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 1)!)])
+        let newTravel = TravelWhere(titlename!, "날짜", Budget(0,0,Currency(rawValue: 0)!), [Budget(1,0,Currency(rawValue: 1)!)])
         
         if let cardBudget = cardBudgetSet.text {
             
@@ -177,6 +206,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         newTravel.background = imgView.image
+        newTravel.period = dateText1.text! + " - " + dateText2.text!
         
         return newTravel
     }
