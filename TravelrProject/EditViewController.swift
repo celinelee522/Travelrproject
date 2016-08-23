@@ -22,6 +22,8 @@ class EditViewController: UIViewController , UITextFieldDelegate{
     
     @IBOutlet weak var numOfPeople: UITextField!
     
+    var itemTitle:String?
+    var itemIndex:Int?
     
     // MARK : TextField Delegate
     
@@ -59,6 +61,7 @@ class EditViewController: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         dateText.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -66,7 +69,7 @@ class EditViewController: UIViewController , UITextFieldDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-}
+    }
 
 
 /*

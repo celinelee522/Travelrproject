@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -703,6 +703,7 @@
                                     <outlet property="detail" destination="TCB-Oa-CJI" id="Aey-ce-254"/>
                                     <outlet property="pay" destination="v70-t4-Xzl" id="8NK-Cm-YKz"/>
                                     <outlet property="price" destination="RMV-B2-rJi" id="e3K-Mo-MeC"/>
+                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEdit" id="Utv-cH-QAE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -867,16 +868,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-K0-rWn">
-                                <rect key="frame" x="146" y="584" width="83" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButton:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="ot8-mE-ncH"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMc-J0-Tzl">
                                 <rect key="frame" x="147" y="372" width="138" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -885,6 +876,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transport" translatesAutoresizingMaskIntoConstraints="NO" id="bev-ik-RCG">
                                 <rect key="frame" x="156" y="477" width="63" height="56"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-K0-rWn">
+                                <rect key="frame" x="0.0" y="561" width="375" height="106"/>
+                                <color key="backgroundColor" red="0.84313725490196079" green="0.11764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="ot8-mE-ncH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -920,6 +922,6 @@
         <image name="traveltitle" width="5760" height="3840"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Syt-II-2TI"/>
+        <segue reference="XOX-bH-Did"/>
     </inferredMetricsTieBreakers>
 </document>

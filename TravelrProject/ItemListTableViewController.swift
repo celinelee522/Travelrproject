@@ -178,14 +178,23 @@ class ItemListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "itemEdit" {
+            let destVC = segue.destinationViewController as! EditViewController
+            
+            let selectedIndex:NSIndexPath = self.tableView.indexPathForSelectedRow!
+            let indexOfItem = selectedIndex.row
+            let itemTitle = dataCenter.travels[travelindex!].items![selectedIndex.row].detail
+            destVC.itemTitle = itemTitle
+            destVC.itemIndex = indexOfItem
+        }
+        
     }
-    */
+    
 
 }
