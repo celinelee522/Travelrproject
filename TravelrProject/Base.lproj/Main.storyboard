@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -279,16 +279,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날짜추가" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTr-Q8-68n">
-                                <rect key="frame" x="20" y="446" width="161" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날짜추가" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YvI-hY-WxK">
-                                <rect key="frame" x="196" y="446" width="166" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cash" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-up-B3r">
                                 <rect key="frame" x="20" y="114" width="111" height="83"/>
                             </imageView>
@@ -302,12 +292,28 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card" translatesAutoresizingMaskIntoConstraints="NO" id="5VW-bQ-4IH">
                                 <rect key="frame" x="25" y="329" width="100" height="87"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="도착" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="URh-vk-KVx">
+                                <rect key="frame" x="195" y="445" width="148" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="출발" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n3i-mc-bD0">
+                                <rect key="frame" x="32" y="445" width="148" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="M1O-DJ-Cp4">
-                        <barButtonItem key="rightBarButtonItem" title="done" id="Sds-0I-2If">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="ezj-pC-tfX">
+                            <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancel:" destination="fpo-wh-T09" id="8Ve-WM-WbW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Sds-0I-2If">
                             <color key="tintColor" red="0.84313725490196079" green="0.11764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="sni-4k-wIX" kind="unwind" identifier="doneUnwind" unwindAction="toTravelList:" id="cny-da-OHb"/>
@@ -322,8 +328,8 @@
                         <outlet property="cashBudgetSet2" destination="yCt-7C-mZY" id="IMm-ai-F1q"/>
                         <outlet property="currencySegment" destination="XiY-Z2-DsV" id="aJw-Z7-G5O"/>
                         <outlet property="currencySet" destination="5fh-lP-M0s" id="dEo-FP-hXc"/>
-                        <outlet property="dateText1" destination="gTr-Q8-68n" id="opk-Fa-bO5"/>
-                        <outlet property="dateText2" destination="YvI-hY-WxK" id="io3-Sg-4vw"/>
+                        <outlet property="dateText1" destination="n3i-mc-bD0" id="OAh-EZ-ZVJ"/>
+                        <outlet property="dateText2" destination="URh-vk-KVx" id="yRJ-sl-59H"/>
                         <outlet property="imgView" destination="Zkc-Jm-3dd" id="sfq-nr-RyC"/>
                         <outlet property="navTitle" destination="M1O-DJ-Cp4" id="hqt-D8-gen"/>
                         <segue destination="sni-4k-wIX" kind="unwind" unwindAction="toTravelList:" id="PRX-C1-k20"/>
@@ -629,6 +635,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Yjo-e3-rFf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="Ud0-N6-RyB">
+                            <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancel:" destination="twN-R0-mDq" id="iKL-S7-NkF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="bVp-hG-ewm">
                             <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -710,7 +722,7 @@
                                     <outlet property="detail" destination="TCB-Oa-CJI" id="Aey-ce-254"/>
                                     <outlet property="pay" destination="v70-t4-Xzl" id="8NK-Cm-YKz"/>
                                     <outlet property="price" destination="RMV-B2-rJi" id="e3K-Mo-MeC"/>
-                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEdit" id="pQd-bl-nYZ"/>
+                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEdit" id="Utv-cH-QAE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -741,7 +753,7 @@
         <!--Item Edit View Controller-->
         <scene sceneID="fIA-4N-uNN">
             <objects>
-                <viewController id="5B5-Yx-Ftp" customClass="ItemEditViewController" sceneMemberID="viewController">
+                <viewController id="5B5-Yx-Ftp" customClass="ItemEditViewController" customModule="TravelrProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ese-DX-RQe"/>
                         <viewControllerLayoutGuide type="bottom" id="j6T-GO-xAe"/>
@@ -898,17 +910,17 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="currency" destination="LKJ-Vs-MsI" id="Vxh-mC-Rpy"/>
-                        <outlet property="date" destination="zZX-xD-fdU" id="DY0-mW-Gh5"/>
-                        <outlet property="detail" destination="CfA-pB-XQ1" id="HmF-8f-TYs"/>
-                        <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="71b-0i-x8y"/>
-                        <outlet property="pay" destination="rO7-9c-Zyq" id="esZ-lL-mdp"/>
-                        <outlet property="price" destination="TwE-GD-rUb" id="zZa-3T-sqt"/>
+                        <outlet property="currency" destination="LKJ-Vs-MsI" id="Pcg-Ss-SiN"/>
+                        <outlet property="date" destination="zZX-xD-fdU" id="Nxt-n1-Xay"/>
+                        <outlet property="detail" destination="CfA-pB-XQ1" id="IQN-qY-7LV"/>
+                        <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="rML-0i-Lxi"/>
+                        <outlet property="pay" destination="rO7-9c-Zyq" id="qZe-s7-odg"/>
+                        <outlet property="price" destination="TwE-GD-rUb" id="0Og-GH-StN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIM-Ac-na8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1197.5" y="-791.5"/>
+            <point key="canvasLocation" x="-1257.5" y="-761.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="eO1-Ew-BJc">
@@ -1055,7 +1067,7 @@
                                 <action selector="cancel:" destination="wqv-Xb-Fc9" id="Fh2-74-Exi"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="done" id="QRd-Ac-WQE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QRd-Ac-WQE">
                             <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="UVK-9M-qdy" kind="unwind" identifier="budgetEditSegue" unwindAction="toMainAfterEdit:" id="Tes-p3-7FE"/>

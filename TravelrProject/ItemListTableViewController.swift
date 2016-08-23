@@ -158,6 +158,7 @@ class ItemListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "itemEdit" {
+            
             let destVC = segue.destinationViewController as! ItemEditViewController
             
             let selectedIndex:NSIndexPath = self.tableView.indexPathForSelectedRow!

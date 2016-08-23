@@ -80,6 +80,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     
     
+    
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    
+    
     @IBAction func toMainView(unwind:UIStoryboardSegue){
     }
     

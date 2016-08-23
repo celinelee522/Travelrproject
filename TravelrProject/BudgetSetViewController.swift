@@ -23,7 +23,6 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBOutlet weak var navTitle: UINavigationItem!
     
-    
     @IBOutlet weak var dateText1: UITextField!
     
     @IBOutlet weak var dateText2: UITextField!
@@ -52,6 +51,17 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     {
         self.navigationController?.navigationBarHidden = false
     }
+    
+    
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    
+    
+    
     
     //date picker
     
@@ -204,9 +214,9 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         newTravel.background = imgView.image
-        newTravel.periodStart = dateText1.text!
-        newTravel.periodEnd = dateText2.text!
-        newTravel.period = newTravel.periodStart! + " - " + newTravel.periodEnd!
+//        newTravel.periodStart = dateText1.text!
+//        newTravel.periodEnd = dateText2.text!
+//        newTravel.period = newTravel.periodStart! + " - " + newTravel.periodEnd!
         
         return newTravel
     }
