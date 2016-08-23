@@ -282,6 +282,7 @@ class Item:NSObject, NSCoding {
         self.category = aDecoder.decodeObjectForKey("category") as! String
         self.numberOfPerson = aDecoder.decodeObjectForKey("numberOfPerson") as! Int
         self.photo = aDecoder.decodeObjectForKey("photo") as? UIImage
+        self.detail = aDecoder.decodeObjectForKey("detail") as? String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -291,6 +292,7 @@ class Item:NSObject, NSCoding {
         aCoder.encodeObject(self.category, forKey: "category")
         aCoder.encodeObject(self.numberOfPerson, forKey: "numberOfPerson")
         aCoder.encodeObject(self.photo, forKey: "photo")
+        aCoder.encodeObject(self.detail, forKey: "detail")
         
     }
     
