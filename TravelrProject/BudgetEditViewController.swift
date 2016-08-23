@@ -225,6 +225,13 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     }
     
     
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    
     
     
     

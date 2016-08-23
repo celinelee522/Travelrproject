@@ -70,14 +70,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func payCard(sender: AnyObject) {
-        
-        
-        
-        
-    }
-    @IBAction func payCash(sender: AnyObject) {
-    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.budgetView()
