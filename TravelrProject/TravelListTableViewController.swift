@@ -41,6 +41,8 @@ class TravelListTableViewController: UITableViewController {
     
     @IBAction func toTravelList(unwind:UIStoryboardSegue){
         
+        self.tableView.reloadData()
+        
     }
     
     

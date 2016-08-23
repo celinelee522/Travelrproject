@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemEditViewController: UIViewController {
+class ItemEditViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var numOfPeople: UITextField!
     @IBOutlet weak var date: UITextField!
@@ -20,11 +20,16 @@ class ItemEditViewController: UIViewController {
     var itemTitle:String?
     var travelIndex:Int?
     var itemIndex:Int?
+    var currencyIndex:Int?
+    
+    @IBOutlet weak var naviTitle: UINavigationItem!
     
     // MARK : TextField Delegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        naviTitle.title = itemTitle
         
         //date.delegate = self
         // Do any additional setup after loading the view.
@@ -57,15 +62,46 @@ class ItemEditViewController: UIViewController {
             
             let item = dataCenter.travels[travelIndex!].items![index]
             
+            
             pay.selectedSegmentIndex = getPay(item.pay)
-            currency.selectedSegmentIndex = item.currency.rawValue
+            currency.selectedSegmentIndex = currencyIndex!
             price.text = String(item.price)
             detail.text = item.detail
             date.text = item.ItemDate()
             numOfPeople.text = String(item.numberOfPerson)
+            currency.setTitle(dataCenter.travels[travelIndex!].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
+            currency.setTitle(dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
             
         }
     }
+    
+    
+    
+    func editingItem(){
+        
+        var currencyNumber:Int = 0
+        // 세그먼트 인덱스 설정 바꿔야함
+        if currency.selectedSegmentIndex == 0 {
+            
+            currencyNumber = dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.rawValue
+        }
+        
+        if let price = price.text{
+        let editItem = Item((price as NSString).doubleValue , Currency(rawValue:currencyNumber)!, pay.selectedSegmentIndex, 0, (numOfPeople.text! as NSString).integerValue)
+        // 카테고리
+            if let detail = detail.text{
+                
+                editItem.detail = detail
+                
+            }
+            
+            dataCenter.travels[travelIndex!].items![itemIndex!] = editItem
+
+        }
+        
+        dataCenter.save()
+    }
+
     
     func textFieldDidEndEditing(textField: UITextField) {
         let datePicker = UIDatePicker()
@@ -95,18 +131,36 @@ class ItemEditViewController: UIViewController {
     }
     
     
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    
     
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "itemEditSegue" {
+            
+            let destVC = segue.destinationViewController as! ItemListTableViewController
+            
+            self.editingItem()
+            
+            destVC.itemEditing()
+            
+        }
+        
+        
     }
-    */
+    
 
 }

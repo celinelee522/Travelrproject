@@ -81,15 +81,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    @IBAction func cancel(sender: AnyObject) {
-        
-        self.navigationController?.popViewControllerAnimated(true)
-        
-    }
+    
     
     
     
     @IBAction func toMainView(unwind:UIStoryboardSegue){
+        self.budgetView()
     }
     
     
@@ -270,24 +267,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             
             destVC.travelTitle = travelName
             destVC.travelindex = travelIndex
-            
+            destVC.itemCurrencyIndex = currencySegment.selectedSegmentIndex
             
         }
         
         
-        if segue.identifier == "itemAdd"{
-            
-            
-            let destVC = segue.destinationViewController as! ItemListTableViewController
-            
-            destVC.travelindex = travelIndex
-            
-            
-            destVC.travelTitle = travelName
-            
-            
-            
-        }
+//        if segue.identifier == "itemAdd"{
+//            
+//            
+//            let destVC = segue.destinationViewController as! ItemListTableViewController
+//            
+//            destVC.travelindex = travelIndex
+//            
+//            
+//            destVC.travelTitle = travelName
+//            
+//            
+//            
+//        }
         
         if segue.identifier == "budgetEditSegue"{
             

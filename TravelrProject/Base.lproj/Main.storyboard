@@ -483,14 +483,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-0C-uoc">
-                                <rect key="frame" x="20" y="72" width="335" height="29"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="-"/>
-                                </segments>
-                                <color key="tintColor" red="0.84313725490196079" green="0.11764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cash" translatesAutoresizingMaskIntoConstraints="NO" id="3Gv-MB-PnU">
                                 <rect key="frame" x="20" y="373" width="86" height="73"/>
                             </imageView>
@@ -631,6 +623,14 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-0C-uoc">
+                                <rect key="frame" x="20" y="72" width="335" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="-"/>
+                                </segments>
+                                <color key="tintColor" red="0.84313725490196079" green="0.11764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -638,7 +638,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="organize" id="Ud0-N6-RyB">
                             <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="cancel:" destination="twN-R0-mDq" id="iKL-S7-NkF"/>
+                                <segue destination="El4-S0-Ap6" kind="unwind" identifier="mainSegue" unwindAction="toTravelList:" id="TEf-Re-uNn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="bVp-hG-ewm">
@@ -671,6 +671,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eid-i0-8HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="El4-S0-Ap6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2170.5" y="-761.5"/>
         </scene>
@@ -722,7 +723,7 @@
                                     <outlet property="detail" destination="TCB-Oa-CJI" id="Aey-ce-254"/>
                                     <outlet property="pay" destination="v70-t4-Xzl" id="8NK-Cm-YKz"/>
                                     <outlet property="price" destination="RMV-B2-rJi" id="e3K-Mo-MeC"/>
-                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEdit" id="Utv-cH-QAE"/>
+                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEditSegue" id="Utv-cH-QAE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -735,7 +736,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="yuY-h3-LZX">
                             <color key="tintColor" red="0.84313725490196079" green="0.11764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="DbO-NP-rEw" kind="unwind" unwindAction="toMainView:" id="pq6-Al-aQN"/>
+                                <segue destination="DbO-NP-rEw" kind="unwind" identifier="itemSegue" unwindAction="toMainView:" id="Cao-kg-Qic"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -750,7 +751,7 @@
             </objects>
             <point key="canvasLocation" x="-1704.5" y="-761.5"/>
         </scene>
-        <!--Item Edit View Controller-->
+        <!--Title-->
         <scene sceneID="fIA-4N-uNN">
             <objects>
                 <viewController id="5B5-Yx-Ftp" customClass="ItemEditViewController" customModule="TravelrProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -763,52 +764,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xu0-rz-FCV">
-                                <rect key="frame" x="206" y="85" width="156" height="128"/>
+                                <rect key="frame" x="202" y="151" width="156" height="128"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku7-1W-ijW">
-                                <rect key="frame" x="20" y="305" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-x3-2y0">
-                                <rect key="frame" x="0.0" y="420" width="375" height="1"/>
-                                <color key="backgroundColor" white="0.81111052849999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gsw-Mm-zRE">
-                                <rect key="frame" x="0.0" y="285" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="364" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.81111052849999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="항목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6q-0p-oNl">
-                                <rect key="frame" x="20" y="85" width="79" height="21"/>
+                                <rect key="frame" x="170" y="72" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-uD-k0k">
-                                <rect key="frame" x="0.0" y="561" width="375" height="1"/>
-                                <color key="backgroundColor" white="0.81111052849999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFI-1M-AWV">
-                                <rect key="frame" x="39" y="226" width="60" height="21"/>
+                                <rect key="frame" x="23" y="319" width="60" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TwE-GD-rUb">
-                                <rect key="frame" x="86" y="226" width="97" height="30"/>
+                                <rect key="frame" x="70" y="319" width="97" height="30"/>
                                 <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LKJ-Vs-MsI">
-                                <rect key="frame" x="86" y="176" width="97" height="29"/>
+                                <rect key="frame" x="65" y="251" width="97" height="29"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -816,33 +799,7 @@
                                 <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="화폐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bga-45-Nda">
-                                <rect key="frame" x="39" y="179" width="60" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-9c-Zyq">
-                                <rect key="frame" x="86" y="121" width="97" height="29"/>
-                                <segments>
-                                    <segment title="cash"/>
-                                    <segment title="card"/>
-                                </segments>
-                                <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="지불수단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3r-NA-few">
-                                <rect key="frame" x="20" y="128" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4j-vR-yoU">
-                                <rect key="frame" x="43" y="340" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="인원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOT-rh-Ifz">
-                                <rect key="frame" x="43" y="374" width="42" height="21"/>
+                                <rect key="frame" x="18" y="254" width="60" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -859,66 +816,145 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hotel" translatesAutoresizingMaskIntoConstraints="NO" id="KbD-gn-UsW">
-                                <rect key="frame" x="224" y="476" width="72" height="56"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dining" translatesAutoresizingMaskIntoConstraints="NO" id="gwV-Id-cQg">
-                                <rect key="frame" x="12" y="484" width="67" height="49"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-gy-aGz">
-                                <rect key="frame" x="79" y="477" width="57" height="56"/>
-                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-pB-XQ1">
+                                <rect key="frame" x="130" y="101" width="127" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku7-1W-ijW">
+                                <rect key="frame" x="20" y="368" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-x3-2y0">
+                                <rect key="frame" x="0.0" y="483" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.81111052849999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zr2-uD-k0k">
+                                <rect key="frame" x="0.0" y="624" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.81111052849999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4j-vR-yoU">
+                                <rect key="frame" x="43" y="403" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="인원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOT-rh-Ifz">
+                                <rect key="frame" x="43" y="437" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UU-FR-BAK">
-                                <rect key="frame" x="18" y="441" width="67" height="21"/>
+                                <rect key="frame" x="18" y="504" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZX-xD-fdU">
-                                <rect key="frame" x="147" y="331" width="138" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-pB-XQ1">
-                                <rect key="frame" x="221" y="234" width="127" height="30"/>
+                                <rect key="frame" x="147" y="394" width="138" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMc-J0-Tzl">
-                                <rect key="frame" x="147" y="372" width="138" height="30"/>
+                                <rect key="frame" x="147" y="435" width="138" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transport" translatesAutoresizingMaskIntoConstraints="NO" id="bev-ik-RCG">
-                                <rect key="frame" x="156" y="477" width="63" height="56"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-D0-VBG" customClass="categoryShopping">
+                                <rect key="frame" x="88" y="549" width="45" height="45"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etc" translatesAutoresizingMaskIntoConstraints="NO" id="GoW-U5-OKa">
-                                <rect key="frame" x="300" y="481" width="62" height="56"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transport" translatesAutoresizingMaskIntoConstraints="NO" id="fYx-kb-Y99" customClass="categoryTransport">
+                                <rect key="frame" x="238" y="549" width="45" height="45"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-K0-rWn">
-                                <rect key="frame" x="142" y="581" width="91" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dining" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-cC-o6P" customClass="categoryFood">
+                                <rect key="frame" x="23" y="549" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etc" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-9k-dch" customClass="categoryEtc">
+                                <rect key="frame" x="313" y="549" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hotel" translatesAutoresizingMaskIntoConstraints="NO" id="1ut-U2-nKU" customClass="categoryHotel">
+                                <rect key="frame" x="160" y="549" width="45" height="45"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5B-pn-jxx">
+                                <rect key="frame" x="22" y="549" width="46" height="45"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="ot8-mE-ncH"/>
+                                    <action selector="eatingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="RdD-pk-LQT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5T-4q-g9K">
+                                <rect key="frame" x="87" y="549" width="46" height="45"/>
+                                <connections>
+                                    <action selector="shoppingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="fKM-cN-tUU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3b-Uz-JRp">
+                                <rect key="frame" x="159" y="549" width="46" height="45"/>
+                                <connections>
+                                    <action selector="sleepingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="m21-Y9-Yhh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWm-7W-MmG">
+                                <rect key="frame" x="237" y="549" width="46" height="45"/>
+                                <connections>
+                                    <action selector="transportCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="hRX-3Y-fva"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLT-nw-GyH">
+                                <rect key="frame" x="314" y="549" width="46" height="45"/>
+                                <connections>
+                                    <action selector="etcCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="JrA-2g-V8O"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-9c-Zyq">
+                                <rect key="frame" x="77" y="201" width="97" height="29"/>
+                                <segments>
+                                    <segment title="카드"/>
+                                    <segment title="현금"/>
+                                </segments>
+                                <color key="tintColor" red="0.84313725490000002" green="0.1176470588" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="지불수단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3r-NA-few">
+                                <rect key="frame" x="11" y="208" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="MgC-OU-9XX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="4eT-KH-dzQ">
+                            <connections>
+                                <action selector="cancel:" destination="5B5-Yx-Ftp" id="Nn5-Mv-MQg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="zZe-yF-eqI">
+                            <connections>
+                                <segue destination="l0X-Ge-oXa" kind="unwind" identifier="itemEditSegue" unwindAction="toitemList:" id="YGT-3A-vDD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="currency" destination="LKJ-Vs-MsI" id="Pcg-Ss-SiN"/>
                         <outlet property="date" destination="zZX-xD-fdU" id="Nxt-n1-Xay"/>
                         <outlet property="detail" destination="CfA-pB-XQ1" id="IQN-qY-7LV"/>
+                        <outlet property="naviTitle" destination="MgC-OU-9XX" id="sgJ-Qy-xNB"/>
                         <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="rML-0i-Lxi"/>
                         <outlet property="pay" destination="rO7-9c-Zyq" id="qZe-s7-odg"/>
                         <outlet property="price" destination="TwE-GD-rUb" id="0Og-GH-StN"/>
+                        <segue destination="l0X-Ge-oXa" kind="unwind" unwindAction="toitemList:" id="hC6-Ql-Qod"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIM-Ac-na8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="l0X-Ge-oXa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1257.5" y="-761.5"/>
         </scene>

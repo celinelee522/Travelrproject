@@ -15,6 +15,7 @@ class ItemListTableViewController: UITableViewController {
     
     var travelTitle:String?
     var travelindex:Int?
+    var itemCurrencyIndex:Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,21 @@ class ItemListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    
+    func itemEditing() {
+        
+        
+        dataCenter.save()
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    @IBAction func toitemList(unwind:UIStoryboardSegue){
+    }
+
+    
     
     func getCategory(input:String) -> String {
         
@@ -157,7 +173,7 @@ class ItemListTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "itemEdit" {
+        if segue.identifier == "itemEditSegue" {
             
             let destVC = segue.destinationViewController as! ItemEditViewController
             
@@ -167,6 +183,7 @@ class ItemListTableViewController: UITableViewController {
             destVC.itemTitle = itemTitle
             destVC.itemIndex = indexOfItem
             destVC.travelIndex = travelindex
+            destVC.currencyIndex = itemCurrencyIndex
         }
         
     }
