@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h02-yb-o21">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -738,10 +738,10 @@
             </objects>
             <point key="canvasLocation" x="-1704.5" y="-761.5"/>
         </scene>
-        <!--Edit View Controller-->
+        <!--Item Edit View Controller-->
         <scene sceneID="fIA-4N-uNN">
             <objects>
-                <viewController id="5B5-Yx-Ftp" customClass="EditViewController" customModule="TravelrProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5B5-Yx-Ftp" customClass="ItemEditViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ese-DX-RQe"/>
                         <viewControllerLayoutGuide type="bottom" id="j6T-GO-xAe"/>
@@ -898,15 +898,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="cashCardSeg" destination="rO7-9c-Zyq" id="CBl-yo-KGK"/>
-                        <outlet property="cashOrCard" destination="rO7-9c-Zyq" id="0bU-hv-nPZ"/>
-                        <outlet property="costText" destination="TwE-GD-rUb" id="D4R-oh-9td"/>
-                        <outlet property="currency" destination="LKJ-Vs-MsI" id="a68-ho-5TG"/>
-                        <outlet property="currencySeg" destination="LKJ-Vs-MsI" id="Ah5-xH-zBd"/>
-                        <outlet property="dateText" destination="zZX-xD-fdU" id="B6i-sq-n7f"/>
-                        <outlet property="itemTitleText" destination="CfA-pB-XQ1" id="Qir-xs-SDo"/>
-                        <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="UfO-5V-Xuw"/>
-                        <outlet property="numPeopleText" destination="CMc-J0-Tzl" id="jv0-DZ-Oqk"/>
+                        <outlet property="currency" destination="LKJ-Vs-MsI" id="Vxh-mC-Rpy"/>
+                        <outlet property="date" destination="zZX-xD-fdU" id="DY0-mW-Gh5"/>
+                        <outlet property="detail" destination="CfA-pB-XQ1" id="HmF-8f-TYs"/>
+                        <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="71b-0i-x8y"/>
+                        <outlet property="pay" destination="rO7-9c-Zyq" id="esZ-lL-mdp"/>
+                        <outlet property="price" destination="TwE-GD-rUb" id="zZa-3T-sqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIM-Ac-na8" userLabel="First Responder" sceneMemberID="firstResponder"/>

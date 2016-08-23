@@ -158,13 +158,14 @@ class ItemListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "itemEdit" {
-            let destVC = segue.destinationViewController as! EditViewController
+            let destVC = segue.destinationViewController as! ItemEditViewController
             
             let selectedIndex:NSIndexPath = self.tableView.indexPathForSelectedRow!
             let indexOfItem = selectedIndex.row
             let itemTitle = dataCenter.travels[travelindex!].items![selectedIndex.row].detail
             destVC.itemTitle = itemTitle
             destVC.itemIndex = indexOfItem
+            destVC.travelIndex = travelindex
         }
         
     }
