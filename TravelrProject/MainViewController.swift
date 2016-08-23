@@ -141,18 +141,6 @@ class MainViewController: UIViewController {
         
     }
     
-    
-    @IBAction func shoppingCategory(sender: AnyObject) {
-        
-        categorySelect = 3
-        shoppingImage.image = UIImage(named: "shopping_sel")
-        eatingImage.image = UIImage(named: "dining")
-        sleepingImage.image = UIImage(named:"hotel")
-        transportImage.image = UIImage(named: "transport")
-        etcImage.image = UIImage(named: "etc")
-        
-    }
-    
     @IBAction func sleepingCategory(sender: AnyObject) {
         
         categorySelect = 1
@@ -173,6 +161,17 @@ class MainViewController: UIViewController {
         shoppingImage.image = UIImage(named: "shopping")
         etcImage.image = UIImage(named: "etc")
 
+    }
+    
+    @IBAction func shoppingCategory(sender: AnyObject) {
+        
+        categorySelect = 3
+        shoppingImage.image = UIImage(named: "shopping_sel")
+        eatingImage.image = UIImage(named: "dining")
+        sleepingImage.image = UIImage(named:"hotel")
+        transportImage.image = UIImage(named: "transport")
+        etcImage.image = UIImage(named: "etc")
+        
     }
     
     @IBAction func etcCategory(sender: AnyObject) {

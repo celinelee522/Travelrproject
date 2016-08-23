@@ -29,7 +29,35 @@ class ItemListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func getCategory(input:String) -> String {
+        
+        if input == "0" {
+            return "dining"
+        }
+        else if input == "1" {
+            return "hotel"
+        }
+        else if input == "2" {
+            return "transport"
+        }
+        else if input == "3" {
+            return "shopping"
+        }
+        else {
+            return "etc"
+        }
+        
+    }
     
+    func getPay(input:String) -> String {
+        
+        if input == "0" {
+            return "card"
+        }
+        else {
+            return "cash"
+        }
+    }
     
     func addNewItem(newItem:Item) {
         
@@ -73,13 +101,16 @@ class ItemListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("itemidentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("itemiList", forIndexPath: indexPath) as! ItemListTableViewCell
         
         if let itemlist = dataCenter.travels[travelindex!].items{
             
             
-            cell.detailTextLabel!.text = itemlist[indexPath.row].category
-            
+            cell.detail.text = itemlist[indexPath.row].detail
+            cell.category.image = UIImage(named:getCategory(itemlist[indexPath.row].category))
+            cell.pay.image = UIImage(named:getPay(itemlist[indexPath.row].pay))
+            cell.currency.text = itemlist[indexPath.row].currency.symbol
+            cell.price.text = String(itemlist[indexPath.row].price)
    
         }
         
