@@ -15,7 +15,7 @@ class ItemListTableViewController: UITableViewController {
     
     var travelTitle:String?
     var travelindex:Int?
-    var itemCurrencyIndex:Int?
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,7 +183,7 @@ class ItemListTableViewController: UITableViewController {
             destVC.itemTitle = itemTitle
             destVC.itemIndex = indexOfItem
             destVC.travelIndex = travelindex
-            destVC.currencyIndex = itemCurrencyIndex
+            
         }
         
     }

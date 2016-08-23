@@ -231,8 +231,8 @@ class TravelWhere:NSObject, NSCoding {
         aCoder.encodeObject(self.items, forKey: "items")
         aCoder.encodeObject(self.initCardBudget, forKey: "initCardBudget")
         aCoder.encodeObject(self.initCashBudget, forKey: "initCashBudget")
-        aCoder.encodeObject(self.periodStart, forKey: "plan")
-        aCoder.encodeObject(self.periodEnd, forKey: "plan")
+        aCoder.encodeObject(self.periodStart, forKey: "periodStart")
+        aCoder.encodeObject(self.periodEnd, forKey: "periodEnd")
         
     }
     
@@ -322,6 +322,7 @@ class Item:NSObject, NSCoding {
         self.numberOfPerson = aDecoder.decodeObjectForKey("numberOfPerson") as! Int
         self.photo = aDecoder.decodeObjectForKey("photo") as? UIImage
         self.detail = aDecoder.decodeObjectForKey("detail") as? String
+        self.date = aDecoder.decodeObjectForKey("date") as! NSDate
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -332,18 +333,19 @@ class Item:NSObject, NSCoding {
         aCoder.encodeObject(self.numberOfPerson, forKey: "numberOfPerson")
         aCoder.encodeObject(self.photo, forKey: "photo")
         aCoder.encodeObject(self.detail, forKey: "detail")
+        aCoder.encodeObject(self.date, forKey: "date")
         
     }
     
     // 지출 항목을 입력할때의 시간을 년,월,일로 써주는 함수
     
-    func ItemDate() -> (String){
+    func ItemDate() -> String{
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
         let itemdate:String = formatter.stringFromDate(date)
         
-        return (itemdate)
+        return itemdate
         
     }
     

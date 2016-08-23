@@ -267,7 +267,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             
             destVC.travelTitle = travelName
             destVC.travelindex = travelIndex
-            destVC.itemCurrencyIndex = currencySegment.selectedSegmentIndex
+            
             
         }
         

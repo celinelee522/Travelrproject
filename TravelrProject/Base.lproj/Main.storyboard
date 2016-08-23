@@ -867,51 +867,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-D0-VBG" customClass="categoryShopping">
-                                <rect key="frame" x="88" y="549" width="45" height="45"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transport" translatesAutoresizingMaskIntoConstraints="NO" id="fYx-kb-Y99" customClass="categoryTransport">
-                                <rect key="frame" x="238" y="549" width="45" height="45"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dining" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-cC-o6P" customClass="categoryFood">
-                                <rect key="frame" x="23" y="549" width="45" height="45"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etc" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-9k-dch" customClass="categoryEtc">
-                                <rect key="frame" x="313" y="549" width="45" height="45"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hotel" translatesAutoresizingMaskIntoConstraints="NO" id="1ut-U2-nKU" customClass="categoryHotel">
-                                <rect key="frame" x="160" y="549" width="45" height="45"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5B-pn-jxx">
-                                <rect key="frame" x="22" y="549" width="46" height="45"/>
-                                <connections>
-                                    <action selector="eatingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="RdD-pk-LQT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5T-4q-g9K">
-                                <rect key="frame" x="87" y="549" width="46" height="45"/>
-                                <connections>
-                                    <action selector="shoppingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="fKM-cN-tUU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3b-Uz-JRp">
-                                <rect key="frame" x="159" y="549" width="46" height="45"/>
-                                <connections>
-                                    <action selector="sleepingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="m21-Y9-Yhh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWm-7W-MmG">
-                                <rect key="frame" x="237" y="549" width="46" height="45"/>
-                                <connections>
-                                    <action selector="transportCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="hRX-3Y-fva"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLT-nw-GyH">
-                                <rect key="frame" x="314" y="549" width="46" height="45"/>
-                                <connections>
-                                    <action selector="etcCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="JrA-2g-V8O"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-9c-Zyq">
                                 <rect key="frame" x="77" y="201" width="97" height="29"/>
                                 <segments>
@@ -926,6 +881,56 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="7bS-O5-Uek" customClass="categoryShopping">
+                                <rect key="frame" x="86" y="552" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transport" translatesAutoresizingMaskIntoConstraints="NO" id="q7H-jL-dQw" customClass="categoryTransport">
+                                <rect key="frame" x="236" y="552" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dining" translatesAutoresizingMaskIntoConstraints="NO" id="OCU-iI-2EF" customClass="categoryFood">
+                                <rect key="frame" x="21" y="552" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etc" translatesAutoresizingMaskIntoConstraints="NO" id="f1P-tG-B3A" customClass="categoryEtc">
+                                <rect key="frame" x="311" y="552" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hotel" translatesAutoresizingMaskIntoConstraints="NO" id="koO-Vb-kLN" customClass="categoryHotel">
+                                <rect key="frame" x="158" y="552" width="45" height="45"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lm-yi-GQt">
+                                <rect key="frame" x="20" y="552" width="46" height="45"/>
+                                <connections>
+                                    <action selector="eatingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="KyI-aH-ohi"/>
+                                    <action selector="eatingCategory:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="mHh-7y-D5G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSY-eE-R6d">
+                                <rect key="frame" x="85" y="552" width="46" height="45"/>
+                                <connections>
+                                    <action selector="shoppingCategory:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="MEN-Jd-OgE"/>
+                                    <action selector="shoppingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="sly-Oj-dT9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mT4-dz-4UD">
+                                <rect key="frame" x="157" y="552" width="46" height="45"/>
+                                <connections>
+                                    <action selector="sleepingCategory:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="Csu-jB-nTJ"/>
+                                    <action selector="sleepingCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="jTc-dd-qDg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-oE-7aD">
+                                <rect key="frame" x="235" y="552" width="46" height="45"/>
+                                <connections>
+                                    <action selector="transportCategory:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="Prf-A8-BsR"/>
+                                    <action selector="transportCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="cQi-S7-Drr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gi-fy-fmV">
+                                <rect key="frame" x="312" y="552" width="46" height="45"/>
+                                <connections>
+                                    <action selector="etcCategory:" destination="twN-R0-mDq" eventType="touchUpInside" id="FjG-fK-QyE"/>
+                                    <action selector="etcCategory:" destination="5B5-Yx-Ftp" eventType="touchUpInside" id="llE-Mp-NVU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -946,10 +951,15 @@
                         <outlet property="currency" destination="LKJ-Vs-MsI" id="Pcg-Ss-SiN"/>
                         <outlet property="date" destination="zZX-xD-fdU" id="Nxt-n1-Xay"/>
                         <outlet property="detail" destination="CfA-pB-XQ1" id="IQN-qY-7LV"/>
+                        <outlet property="eatingImage" destination="OCU-iI-2EF" id="DFn-uW-DzW"/>
+                        <outlet property="etcImage" destination="f1P-tG-B3A" id="9ab-wq-K0H"/>
                         <outlet property="naviTitle" destination="MgC-OU-9XX" id="sgJ-Qy-xNB"/>
                         <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="rML-0i-Lxi"/>
                         <outlet property="pay" destination="rO7-9c-Zyq" id="qZe-s7-odg"/>
                         <outlet property="price" destination="TwE-GD-rUb" id="0Og-GH-StN"/>
+                        <outlet property="shoppingImage" destination="7bS-O5-Uek" id="83v-ak-acp"/>
+                        <outlet property="sleepingImage" destination="koO-Vb-kLN" id="fRA-tI-A9E"/>
+                        <outlet property="transportImage" destination="q7H-jL-dQw" id="4et-H3-IvB"/>
                         <segue destination="l0X-Ge-oXa" kind="unwind" unwindAction="toitemList:" id="hC6-Ql-Qod"/>
                     </connections>
                 </viewController>

@@ -106,7 +106,7 @@
                   moduleName = "TravelrProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/LEE/Travelrproject/TravelrProject/Travelr.swift"
-                  timestampString = "493645709.629828"
+                  timestampString = "493653842.359652"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "274"
@@ -121,7 +121,7 @@
                   moduleName = "TravelrProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/LEE/Travelrproject/TravelrProject/Travelr.swift"
-                  timestampString = "493645709.630136"
+                  timestampString = "493653842.36003"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "274"
@@ -160,6 +160,38 @@
             startingLineNumber = "244"
             endingLineNumber = "244"
             landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelrProject/ItemEditViewController.swift"
+            timestampString = "493656616.021716"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "editingItem()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelrProject/ItemEditViewController.swift"
+            timestampString = "493656616.021716"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "editingItem()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
