@@ -710,7 +710,7 @@
                                     <outlet property="detail" destination="TCB-Oa-CJI" id="Aey-ce-254"/>
                                     <outlet property="pay" destination="v70-t4-Xzl" id="8NK-Cm-YKz"/>
                                     <outlet property="price" destination="RMV-B2-rJi" id="e3K-Mo-MeC"/>
-                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEdit" id="Utv-cH-QAE"/>
+                                    <segue destination="5B5-Yx-Ftp" kind="show" identifier="itemEdit" id="pQd-bl-nYZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

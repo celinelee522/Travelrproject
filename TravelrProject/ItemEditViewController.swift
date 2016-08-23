@@ -16,6 +16,7 @@ class ItemEditViewController: UIViewController {
     @IBOutlet weak var price: UITextField!
     @IBOutlet weak var currency: UISegmentedControl!
     @IBOutlet weak var pay: UISegmentedControl!
+    
     var itemTitle:String?
     var travelIndex:Int?
     var itemIndex:Int?
@@ -25,7 +26,7 @@ class ItemEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        date.delegate = self
+        //date.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -55,6 +56,7 @@ class ItemEditViewController: UIViewController {
         if let index = itemIndex {
             
             let item = dataCenter.travels[travelIndex!].items![index]
+            
             pay.selectedSegmentIndex = getPay(item.pay)
             currency.selectedSegmentIndex = item.currency.rawValue
             price.text = String(item.price)
