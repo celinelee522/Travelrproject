@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		725109D71D6BE9DF001178FD /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725109D61D6BE9DF001178FD /* EditViewController.swift */; };
 		9B1706861D64020E00E2F22D /* BudgetSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1706851D64020E00E2F22D /* BudgetSetViewController.swift */; };
 		9B17068A1D6439DF00E2F22D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1706891D6439DF00E2F22D /* MainViewController.swift */; };
 		9B37800F1D648FCE00BE1149 /* BudgetPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37800E1D648FCE00BE1149 /* BudgetPopupViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		725109D61D6BE9DF001178FD /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9B1706851D64020E00E2F22D /* BudgetSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetSetViewController.swift; sourceTree = "<group>"; };
 		9B1706891D6439DF00E2F22D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9B37800E1D648FCE00BE1149 /* BudgetPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPopupViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				9BAEFEF61D63F0840067F15D /* AppDelegate.swift */,
 				9BAEFEF81D63F0840067F15D /* ViewController.swift */,
 				9BAEFEFA1D63F0840067F15D /* Main.storyboard */,
+				725109D61D6BE9DF001178FD /* EditViewController.swift */,
 				9BAEFEFF1D63F0840067F15D /* LaunchScreen.storyboard */,
 				BBEBD92A1D6AC47A000EBB91 /* Assets.xcassets */,
 				9BAEFF021D63F0840067F15D /* Info.plist */,
@@ -173,6 +176,7 @@
 				9BAEFEF91D63F0840067F15D /* ViewController.swift in Sources */,
 				BB15A5151D6BE8280064EA8B /* ItemListTableViewCell.swift in Sources */,
 				9BAEFEF71D63F0840067F15D /* AppDelegate.swift in Sources */,
+				725109D71D6BE9DF001178FD /* EditViewController.swift in Sources */,
 				9B4AC6D51D67505000F9ECA2 /* TravelListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
