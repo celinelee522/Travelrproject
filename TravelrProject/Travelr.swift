@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let dataCenter:TravelData = TravelData()
-let fileName = "BranchData.brch"
+let fileName = "BranchData.csv"
 
 class TravelData {
     var travels:[TravelWhere] = []
