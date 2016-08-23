@@ -883,10 +883,14 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="cashCardSeg" destination="rO7-9c-Zyq" id="CBl-yo-KGK"/>
                         <outlet property="cashOrCard" destination="rO7-9c-Zyq" id="0bU-hv-nPZ"/>
-                        <outlet property="costText" destination="TwE-GD-rUb" id="afG-MG-pc2"/>
+                        <outlet property="costText" destination="TwE-GD-rUb" id="D4R-oh-9td"/>
                         <outlet property="currency" destination="LKJ-Vs-MsI" id="a68-ho-5TG"/>
-                        <outlet property="dateText" destination="zZX-xD-fdU" id="Joj-cD-8sc"/>
+                        <outlet property="currencySeg" destination="LKJ-Vs-MsI" id="Ah5-xH-zBd"/>
+                        <outlet property="dateText" destination="zZX-xD-fdU" id="B6i-sq-n7f"/>
+                        <outlet property="itemTitleText" destination="CfA-pB-XQ1" id="Qir-xs-SDo"/>
+                        <outlet property="numOfPeople" destination="CMc-J0-Tzl" id="UfO-5V-Xuw"/>
                         <outlet property="numPeopleText" destination="CMc-J0-Tzl" id="jv0-DZ-Oqk"/>
                     </connections>
                 </viewController>
