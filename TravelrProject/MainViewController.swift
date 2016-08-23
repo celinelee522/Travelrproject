@@ -44,6 +44,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cardUsedWon: UILabel!
     @IBOutlet weak var cardUsed: UILabel!
     @IBOutlet weak var cardBudget: UILabel!
+    @IBOutlet weak var cardUsedTotal: UILabel!
     
     
     var travelName:String?
@@ -98,14 +99,19 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             let indexCurrency = dataCenter.travels[index].initCashBudget[0].BudgetCurrency
             let indexCurrencyWon = Currency(rawValue: 0)!
             
+            let cardUsedDouble = dataCenter.travels[index].MoneyByPayCurrency(indexCurrency).cardSpend
+            let cardUsedWonDouble = dataCenter.travels[index].MoneyByPayCurrency(indexCurrencyWon).cardSpend
+            let cardUsedWonTotal = cardUsedWonDouble + cardUsedDouble * indexCurrency.ratio
+            
             cashCurrency.text = indexCurrency.symbol
             cardCurrency.text = indexCurrency.symbol
             cashUsed1.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrency).cashSpend)
             cashUsedWon.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrencyWon).cashSpend)
             cashBudget1.text = String(dataCenter.travels[index].initCashBudget[0].Money)
             cashBudget2.text = String(dataCenter.travels[index].initCashBudget[1].Money)
-            cardUsed.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrency).cardSpend)
-            cardUsedWon.text = String(dataCenter.travels[index].MoneyByPayCurrency(indexCurrencyWon).cardSpend)
+            cardUsed.text = String(cardUsedDouble)
+            cardUsedWon.text = String(cardUsedWonDouble)
+            cardUsedTotal.text = "(합계 : 약 \(String(cardUsedWonTotal)))"
             cardBudget.text = String(dataCenter.travels[index].initCardBudget.Money)
             
             currencySegment.setTitle(dataCenter.travels[index].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
