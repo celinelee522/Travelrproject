@@ -216,9 +216,12 @@
                                 </connections>
                             </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zkc-Jm-3dd">
                                 <rect key="frame" x="84" y="496" width="207" height="163"/>
                             </imageView>
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XiY-Z2-DsV">
@@ -615,6 +618,10 @@
                                 <connections>
                                     <action selector="cashPay:" destination="twN-R0-mDq" eventType="touchUpInside" id="t7g-1W-ban"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                                    <segue destination="2Ia-iE-cow" kind="show" identifier="itemAdd" id="XOX-bH-Did"/>
+>>>>>>> origin/master
 =======
                                     <segue destination="2Ia-iE-cow" kind="show" identifier="itemAdd" id="XOX-bH-Did"/>
 >>>>>>> origin/master
@@ -628,6 +635,10 @@
                                 <connections>
                                     <action selector="cardPay:" destination="twN-R0-mDq" eventType="touchUpInside" id="cfh-a4-jYq"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                                    <segue destination="2Ia-iE-cow" kind="show" identifier="itemAdd" id="Syt-II-2TI"/>
+>>>>>>> origin/master
 =======
                                     <segue destination="2Ia-iE-cow" kind="show" identifier="itemAdd" id="Syt-II-2TI"/>
 >>>>>>> origin/master
@@ -683,11 +694,19 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3DE-X1-9Jk" id="hoG-ix-zsx">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-AI-bc7">
                                             <rect key="frame" x="31" y="46" width="40" height="40"/>
+=======
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-AI-bc7">
+                                            <rect key="frame" x="31" y="45.5" width="40" height="40"/>
+>>>>>>> origin/master
 =======
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -710,7 +729,11 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v70-t4-Xzl">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                             <rect key="frame" x="93" y="41" width="60" height="50"/>
+=======
+                                            <rect key="frame" x="93" y="41" width="60" height="49.5"/>
+>>>>>>> origin/master
 =======
                                             <rect key="frame" x="93" y="41" width="60" height="49.5"/>
 >>>>>>> origin/master
