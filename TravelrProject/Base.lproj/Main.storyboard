@@ -696,7 +696,6 @@
                                     <outlet property="detail" destination="TCB-Oa-CJI" id="Aey-ce-254"/>
                                     <outlet property="pay" destination="v70-t4-Xzl" id="8NK-Cm-YKz"/>
                                     <outlet property="price" destination="RMV-B2-rJi" id="e3K-Mo-MeC"/>
-                                    <outlet property="title" destination="TCB-Oa-CJI" id="6MA-kB-ZVX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
