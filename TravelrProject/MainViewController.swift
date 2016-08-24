@@ -142,6 +142,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         self.addNewItem(new)
         self.budgetView()
         
+        priceSet.text = ""
+        detailSet.text = ""
+        
     }
     
     @IBAction func cardPay(sender: AnyObject) {
@@ -150,6 +153,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         let new = self.addingitem()
         self.addNewItem(new)
         self.budgetView()
+        
+        priceSet.text = ""
+        detailSet.text = ""
     }
     
     

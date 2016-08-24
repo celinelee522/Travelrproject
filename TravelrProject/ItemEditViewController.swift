@@ -302,7 +302,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
             
             editItem.photo = itemImage.image
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+            dateFormatter.dateFormat = "yyyy.MM.dd"
             editItem.date = dateFormatter.dateFromString(date.text!)!
             
             dataCenter.travels[travelIndex!].items![itemIndex!] = editItem
@@ -365,7 +365,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     // MARK:- Button Done and Cancel
     func doneClick() {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyy.MM.dd"
         date.text = formatter.stringFromDate(datePicker.date) //string
         date.resignFirstResponder()
     }
