@@ -150,6 +150,16 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         }
     }
     
+    
+    @IBAction func openCameraButton(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.allowsEditing = false
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
     func itemView() {
         
         if let index = itemIndex {
