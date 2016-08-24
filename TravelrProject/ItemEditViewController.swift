@@ -52,7 +52,6 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         self.itemView()
         date.delegate = self
         naviTitle.title = itemTitle
-        
         //date.delegate = self
         // Do any additional setup after loading the view.
     }
