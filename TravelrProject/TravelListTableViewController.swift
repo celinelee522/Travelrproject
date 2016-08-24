@@ -73,8 +73,7 @@ class TravelListTableViewController: UITableViewController {
         
         cell.travelTitle.text = travelItem.title
         cell.travelPeriod.text = travelItem.period
-        cell.cashBudget.text = "현금 : \(String(travelItem.initCashBudget[0].Money)) / \(String(travelItem.initCashBudget[1].Money))"
-        cell.cardBudget.text = "카드 : \(String(travelItem.initCardBudget.Money))"
+        
         cell.travelBackground.image = travelItem.background
         return cell
     }

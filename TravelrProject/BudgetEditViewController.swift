@@ -150,7 +150,7 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     // MARK:- Button Done and Cancel
     func doneClick1() {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyy.MM.dd"
         dateText1.text = formatter.stringFromDate(datePicker1.date) //string
         dateText1.resignFirstResponder()
     }
@@ -160,7 +160,7 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     
     func doneClick2() {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyy.MM.dd"
         dateText2.text = formatter.stringFromDate(datePicker2.date) //string
         dateText2.resignFirstResponder()
     }

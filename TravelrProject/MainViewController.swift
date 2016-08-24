@@ -116,7 +116,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             cardUsed.text = String(cardUsedDouble)
             cardUsedWon.text = String(cardUsedWonDouble)
             cardUsedTotal.text = "(합계 : 약 \(String(cardUsedWonTotal)))"
-            cardBudget.text = "약 " + String(cardRemainWon)
+            cardBudget.text = String(cardRemainWon)
             
             currencySegment.setTitle(dataCenter.travels[index].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
             currencySegment.setTitle(dataCenter.travels[index].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)

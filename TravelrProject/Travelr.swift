@@ -342,7 +342,7 @@ class Item:NSObject, NSCoding {
     func ItemDate() -> String{
         
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyy.MM.dd"
         let itemdate:String = formatter.stringFromDate(date)
         
         return itemdate
