@@ -214,9 +214,9 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         newTravel.background = imgView.image
-//        newTravel.periodStart = dateText1.text!
-//        newTravel.periodEnd = dateText2.text!
-//        newTravel.period = newTravel.periodStart! + " - " + newTravel.periodEnd!
+        newTravel.periodStart = dateText1.text!
+        newTravel.periodEnd = dateText2.text!
+        newTravel.period = newTravel.periodStart! + " - " + newTravel.periodEnd!
         
         return newTravel
     }
