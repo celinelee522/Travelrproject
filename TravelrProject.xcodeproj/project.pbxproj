@@ -20,8 +20,8 @@
 		9BAEFF131D63F27E0067F15D /* Travelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEFF121D63F27E0067F15D /* Travelr.swift */; };
 		9BAEFF171D63F45D0067F15D /* TitleSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEFF161D63F45D0067F15D /* TitleSetViewController.swift */; };
 		9BCC04121D6C147800B1DD3F /* BudgetEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCC04111D6C147800B1DD3F /* BudgetEditViewController.swift */; };
+		9BE65F0F1D6D54E70020C706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F0E1D6D54E70020C706 /* Assets.xcassets */; };
 		BB15A5151D6BE8280064EA8B /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A5141D6BE8280064EA8B /* ItemListTableViewCell.swift */; };
-		BBEBD92B1D6AC47A000EBB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEBD92A1D6AC47A000EBB91 /* Assets.xcassets */; };
 		BBF9E14D1D6C597D00146FBF /* ItemEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E14C1D6C597D00146FBF /* ItemEditViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +41,8 @@
 		9BAEFF121D63F27E0067F15D /* Travelr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Travelr.swift; sourceTree = "<group>"; };
 		9BAEFF161D63F45D0067F15D /* TitleSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSetViewController.swift; sourceTree = "<group>"; };
 		9BCC04111D6C147800B1DD3F /* BudgetEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetEditViewController.swift; sourceTree = "<group>"; };
+		9BE65F0E1D6D54E70020C706 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB15A5141D6BE8280064EA8B /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
-		BBEBD92A1D6AC47A000EBB91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBF9E14C1D6C597D00146FBF /* ItemEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,8 +79,8 @@
 				9BAEFEF61D63F0840067F15D /* AppDelegate.swift */,
 				9BAEFEF81D63F0840067F15D /* ViewController.swift */,
 				9BAEFEFA1D63F0840067F15D /* Main.storyboard */,
+				9BE65F0E1D6D54E70020C706 /* Assets.xcassets */,
 				9BAEFEFF1D63F0840067F15D /* LaunchScreen.storyboard */,
-				BBEBD92A1D6AC47A000EBB91 /* Assets.xcassets */,
 				9BAEFF021D63F0840067F15D /* Info.plist */,
 				9BAEFF121D63F27E0067F15D /* Travelr.swift */,
 				9B4AC6D61D677A5100F9ECA2 /* TravelContentTableViewCell.swift */,
@@ -157,7 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BAEFF011D63F0840067F15D /* LaunchScreen.storyboard in Resources */,
-				BBEBD92B1D6AC47A000EBB91 /* Assets.xcassets in Resources */,
+				9BE65F0F1D6D54E70020C706 /* Assets.xcassets in Resources */,
 				9BAEFEFC1D63F0840067F15D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

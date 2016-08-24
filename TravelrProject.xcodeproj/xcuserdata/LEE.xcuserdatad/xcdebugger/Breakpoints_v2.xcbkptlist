@@ -105,13 +105,13 @@
                   symbolName = "TravelrProject.TravelWhere.MoneyByPayCurrency (TravelrProject.Currency) -&gt; (cardSpend : Swift.Double, cashSpend : Swift.Double, cardRemian : Swift.Double, cashRemain : Swift.Double)"
                   moduleName = "TravelrProject"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/LEE/Travelrproject/TravelrProject/Travelr.swift"
-                  timestampString = "493693854.719418"
+                  urlString = "file:///Users/LEE/Desktop/Travelrproject/TravelrProject/Travelr.swift"
+                  timestampString = "493703123.667888"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "274"
                   endingLineNumber = "274"
-                  offsetFromSymbolStart = "1356">
+                  offsetFromSymbolStart = "944">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -120,13 +120,13 @@
                   symbolName = "TravelrProject.TravelWhere.(MoneyByPayCurrency (TravelrProject.Currency) -&gt; (cardSpend : Swift.Double, cashSpend : Swift.Double, cardRemian : Swift.Double, cashRemain : Swift.Double)).(closure #3)"
                   moduleName = "TravelrProject"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/LEE/Travelrproject/TravelrProject/Travelr.swift"
-                  timestampString = "493693854.720248"
+                  urlString = "file:///Users/LEE/Desktop/Travelrproject/TravelrProject/Travelr.swift"
+                  timestampString = "493703123.668047"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "274"
                   endingLineNumber = "274"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelrProject/ItemEditViewController.swift"
-            timestampString = "493695977.875085"
+            timestampString = "493702077.562721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "editingItem()"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,12 +186,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelrProject/ItemEditViewController.swift"
-            timestampString = "493695977.875085"
+            timestampString = "493702077.562721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "editingItem()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelrProject/Travelr.swift"
+            timestampString = "493702820.595042"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "save()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TravelrProject/Travelr.swift"
+            timestampString = "493702936.515587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "init()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

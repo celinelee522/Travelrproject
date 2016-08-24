@@ -17,7 +17,7 @@ class TravelData {
     
     var filePath:String { get{
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
-        return documentDirectory + fileName
+        return documentDirectory + "/" + fileName
         }}
     
     init() {

@@ -239,7 +239,27 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
         
         let newItem = Item(0, Currency(rawValue:currencyNumber)!, payCashOrCard, categorySelect, 1)
-        //지불수단, 카테고리 ,인원 고정되있음
+        
+        for i in 0...4{
+            if newItem.category == setCategory(i){
+                switch i {
+                case 0:
+                    newItem.photo = UIImage(named: "itemDefault5")
+                case 1:
+                    newItem.photo = UIImage(named: "itemDefault1")
+                case 2:
+                    newItem.photo = UIImage(named: "itemDefault3")
+                case 3:
+                    newItem.photo = UIImage(named: "itemDefault2")
+                default:
+                    newItem.photo = UIImage(named: "itemDefault4")
+                    
+                }
+                
+                
+            }
+        }
+        
         
         if let price = priceSet.text{
             newItem.price = (price as NSString).doubleValue

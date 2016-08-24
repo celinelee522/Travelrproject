@@ -167,6 +167,8 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
             
             price.text = String(item.price)
             detail.text = item.detail
+            
+            itemImage.image = item.photo
             date.text = item.ItemDate()
             numOfPeople.text = String(item.numberOfPerson)
             currency.setTitle(dataCenter.travels[travelIndex!].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
@@ -192,19 +194,14 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
                     switch i {
                     case 0:
                         eatingImage.image = UIImage(named: "dining_sel")
-                        itemImage.image = UIImage(named: "itemDefault5")
                     case 1:
                         sleepingImage.image = UIImage(named: "hotel_sel")
-                        itemImage.image = UIImage(named: "itemDefault1")
                     case 2:
                         transportImage.image = UIImage(named: "transport_sel")
-                        itemImage.image = UIImage(named: "itemDefault3")
                     case 3:
                         shoppingImage.image = UIImage(named: "shopping_sel")
-                        itemImage.image = UIImage(named: "itemDefault2")
                     default:
                         etcImage.image = UIImage(named: "etc_sel")
-                        itemImage.image = UIImage(named: "itemDefault4")
 
                     }
 
