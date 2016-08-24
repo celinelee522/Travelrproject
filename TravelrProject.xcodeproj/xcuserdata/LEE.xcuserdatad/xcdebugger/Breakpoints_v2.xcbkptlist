@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelrProject/ItemEditViewController.swift"
-            timestampString = "493702077.562721"
+            timestampString = "493711941.315605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "editingItem()"
             landmarkType = "5">
          </BreakpointContent>
@@ -180,12 +180,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TravelrProject/ItemEditViewController.swift"
-            timestampString = "493702077.562721"
+            timestampString = "493711941.315605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "editingItem()"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "closeKeyBoard()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
