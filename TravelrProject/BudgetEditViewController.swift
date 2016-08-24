@@ -11,6 +11,8 @@ import MobileCoreServices
 
 class BudgetEditViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate {
 
+    var datePicker1:UIDatePicker!
+    var datePicker2:UIDatePicker!
     var imagePicker: UIImagePickerController! = UIImagePickerController()
     var captureImage:UIImage!
     var flagImageSave = false
@@ -65,33 +67,11 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
         self.navigationController?.navigationBarHidden = false
     }
     
-    //date picker
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        let datePicker1 = UIDatePicker()
-        let datePicker2 = UIDatePicker()
-        dateText1.inputView = datePicker1
-        dateText2.inputView = datePicker2
-        datePicker1.addTarget(self, action: #selector(BudgetSetViewController.datePickerChanged1(_:)), forControlEvents: .ValueChanged)
-        datePicker2.addTarget(self, action: #selector(BudgetSetViewController.datePickerChanged2(_:)), forControlEvents: .ValueChanged)
-    }
-    
-    
-    func datePickerChanged1(sender: UIDatePicker) {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        dateText1.text = formatter.stringFromDate(sender.date)
-    }
-    
-    func datePickerChanged2(sender: UIDatePicker) {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        dateText2.text = formatter.stringFromDate(sender.date)
-    }
-    
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    // datepicker
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        self.pickUpDate1(self.dateText1)
+        self.pickUpDate2(self.dateText2)
         return true
     }
     
@@ -99,15 +79,96 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
         self.view.endEditing(true)
     }
     
-    
-    
-    
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
-        view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
+    // MARK : Touch event
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        closeKeyBoard()
     }
     
+    
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    
+    
+    
+    //MARK:- Function of datePicker
+    func pickUpDate1(textField : UITextField){
+        
+        // DatePicker
+        self.datePicker1 = UIDatePicker(frame:CGRectMake(0, 0, self.view.frame.size.width, 216))
+        self.datePicker1.backgroundColor = UIColor.whiteColor()
+        self.datePicker1.datePickerMode = UIDatePickerMode.Date
+        textField.inputView = self.datePicker1
+        
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor(red: 215/255, green: 30/255, blue: 46/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneClick1")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelClick1")
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        
+    }
+    
+    //MARK:- Function of datePicker
+    func pickUpDate2(textField : UITextField){
+        
+        // DatePicker
+        self.datePicker2 = UIDatePicker(frame:CGRectMake(0, 0, self.view.frame.size.width, 216))
+        self.datePicker2.backgroundColor = UIColor.whiteColor()
+        self.datePicker2.datePickerMode = UIDatePickerMode.Date
+        textField.inputView = self.datePicker2
+        
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor(red: 215/255, green: 30/255, blue: 46/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneClick2")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelClick2")
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        
+    }
+
+    
+    // MARK:- Button Done and Cancel
+    func doneClick1() {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        dateText1.text = formatter.stringFromDate(datePicker1.date) //string
+        dateText1.resignFirstResponder()
+    }
+    func cancelClick1() {
+        dateText1.resignFirstResponder()
+    }
+    
+    func doneClick2() {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        dateText2.text = formatter.stringFromDate(datePicker2.date) //string
+        dateText2.resignFirstResponder()
+    }
+    func cancelClick2() {
+        dateText2.resignFirstResponder()
+    }
+    
+
     
     @IBOutlet weak var imgView: UIImageView!
     
@@ -223,13 +284,7 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
         dataCenter.travels[travelIndex!].period = dateText1.text! + " - " + dateText2.text!
         
     }
-    
-    
-    @IBAction func cancel(sender: AnyObject) {
-        
-        self.navigationController?.popViewControllerAnimated(true)
-        
-    }
+
     
     
     

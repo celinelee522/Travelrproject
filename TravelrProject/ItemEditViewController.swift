@@ -11,6 +11,7 @@ import MobileCoreServices
 
 class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    var datePicker:UIDatePicker!
     
     var imagePicker: UIImagePickerController! = UIImagePickerController()
     var captureImage:UIImage!
@@ -300,30 +301,16 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         
         dataCenter.save()
     }
-
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        let datePicker = UIDatePicker()
-        textField.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(ItemEditViewController.datePickerChanged(_:)), forControlEvents: .ValueChanged)
-    }
-    
-    
-    func datePickerChanged(sender: UIDatePicker) {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        date.text = formatter.stringFromDate(sender.date) //string
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    // datepicker
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        self.pickUpDate(self.date)
         return true
     }
     
     func closeKeyBoard() {
         self.view.endEditing(true)
     }
-    
+ 
     // MARK : Touch event
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         closeKeyBoard()
@@ -339,7 +326,43 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     
     
     
+    //MARK:- Function of datePicker
+    func pickUpDate(textField : UITextField){
+        
+        // DatePicker
+        self.datePicker = UIDatePicker(frame:CGRectMake(0, 0, self.view.frame.size.width, 216))
+        self.datePicker.backgroundColor = UIColor.whiteColor()
+        self.datePicker.datePickerMode = UIDatePickerMode.Date
+        textField.inputView = self.datePicker
+        
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor(red: 215/255, green: 30/255, blue: 46/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneClick")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelClick")
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        
+    }
     
+    // MARK:- Button Done and Cancel
+    func doneClick() {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        date.text = formatter.stringFromDate(datePicker.date) //string
+        date.resignFirstResponder()
+    }
+    func cancelClick() {
+        date.resignFirstResponder()
+    }
+
 
     
     // MARK: - Navigation
