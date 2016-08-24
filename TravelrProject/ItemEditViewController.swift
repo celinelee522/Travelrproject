@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class ItemEditViewController: UIViewController,UITextFieldDelegate {
+class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    
+    var imagePicker: UIImagePickerController! = UIImagePickerController()
+    var captureImage:UIImage!
+    var flagImageSave = false
+    
+    @IBOutlet weak var itemImage: UIImageView!
     
     @IBOutlet weak var shoppingImage: UIImageView!
     
@@ -28,10 +35,12 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var currency: UISegmentedControl!
     @IBOutlet weak var pay: UISegmentedControl!
     
+    @IBOutlet weak var currencyLabel: UILabel!
+    
     var itemTitle:String?
     var travelIndex:Int?
     var itemIndex:Int?
-    var categorySelect:Int = 0
+    var categorySelect:Int?
     
     @IBOutlet weak var naviTitle: UINavigationItem!
     
@@ -40,6 +49,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.itemView()
         date.delegate = self
         naviTitle.title = itemTitle
         
@@ -54,7 +64,79 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.itemView()
+        
+    }
+    
+    @IBAction func currencySetting(sender: AnyObject) {
+        
+        for i in 0...1{
+            
+            if currency.selectedSegmentIndex == i {
+                
+                currencyLabel.text = currency.titleForSegmentAtIndex(i)
+                
+            }
+        }
+        
+    }
+
+    
+    @IBAction func loadingImgView(sender: AnyObject) {
+        
+        if(UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
+            flagImageSave = false
+            
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = true
+            
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }
+            
+        else {
+            
+            imageAlert("Photo album inaccessable", message: "Application cannot access the photo album")
+            
+        }
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        
+        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+        
+        if mediaType.isEqualToString(kUTTypeImage as NSString as String){
+            
+            captureImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            
+            if flagImageSave{
+                UIImageWriteToSavedPhotosAlbum(captureImage, self, nil, nil)
+            }
+            
+            itemImage.image = captureImage
+            
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // 이미지 경고창띄우는것
+    func imageAlert(title: String, message:String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.Alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
     func getPay(input:String) -> Int {
@@ -91,6 +173,8 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
             currency.setTitle(dataCenter.travels[travelIndex!].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
             currency.setTitle(dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
             
+            currencyLabel.text = currency.titleForSegmentAtIndex(currency.selectedSegmentIndex)
+            
             shoppingImage.image = UIImage(named: "shopping")
             transportImage.image = UIImage(named: "transport")
             eatingImage.image = UIImage(named: "dining")
@@ -100,17 +184,29 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
             
             for i in 0...4{
                 if item.category == setCategory(i){
+                    categorySelect = i
+                }
+            }
+            
+            for i in 0...4{
+                if item.category == setCategory(i){
                     switch i {
                     case 0:
                         eatingImage.image = UIImage(named: "dining_sel")
+                        itemImage.image = UIImage(named: "itemDefault5")
                     case 1:
                         sleepingImage.image = UIImage(named: "hotel_sel")
+                        itemImage.image = UIImage(named: "itemDefault1")
                     case 2:
                         transportImage.image = UIImage(named: "transport_sel")
+                        itemImage.image = UIImage(named: "itemDefault3")
                     case 3:
                         shoppingImage.image = UIImage(named: "shopping_sel")
+                        itemImage.image = UIImage(named: "itemDefault2")
                     default:
                         etcImage.image = UIImage(named: "etc_sel")
+                        itemImage.image = UIImage(named: "itemDefault4")
+
                     }
 
                     
@@ -189,7 +285,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
         }
         
         if let price = price.text{
-            let editItem = Item((price as NSString).doubleValue , Currency(rawValue:currencyNumber)!, pay.selectedSegmentIndex, categorySelect, (numOfPeople.text! as NSString).integerValue)
+            let editItem = Item((price as NSString).doubleValue , Currency(rawValue:currencyNumber)!, pay.selectedSegmentIndex, categorySelect!, (numOfPeople.text! as NSString).integerValue)
                 // 카테고리
             if let detail = detail.text{
                 
@@ -197,7 +293,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate {
                 
             }
             
-            
+            editItem.photo = itemImage.image
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy년 MM월 dd일"
             editItem.date = dateFormatter.dateFromString(date.text!)!
