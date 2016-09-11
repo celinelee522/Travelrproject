@@ -102,9 +102,9 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneClick1")
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(BudgetSetViewController.doneClick1))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelClick1")
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(BudgetSetViewController.cancelClick1))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.userInteractionEnabled = true
         textField.inputAccessoryView = toolBar
@@ -128,9 +128,9 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneClick2")
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(BudgetSetViewController.doneClick2))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelClick2")
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(BudgetSetViewController.cancelClick2))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.userInteractionEnabled = true
         textField.inputAccessoryView = toolBar
@@ -227,7 +227,7 @@ class BudgetSetViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func currencySetting(sender: AnyObject) {
         
-        for i in 0...3{
+        for i in 0...4{
             
             if currencySegment.selectedSegmentIndex == i {
                 

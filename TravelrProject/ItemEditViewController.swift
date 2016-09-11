@@ -353,9 +353,9 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneClick")
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(ItemEditViewController.doneClick))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelClick")
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(ItemEditViewController.cancelClick))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.userInteractionEnabled = true
         textField.inputAccessoryView = toolBar

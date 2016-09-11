@@ -59,6 +59,7 @@ class TravelData {
 
 // 환율계산 및 화폐단위심볼
 
+var currencyArray:Array<Double> = []
 
 enum Currency:Int{
     case KRW = 0, USD, JPY, EUR, GBP, CNY
@@ -67,11 +68,11 @@ enum Currency:Int{
         get{
             switch self {
             case .KRW : return 1.0
-            case .USD : return 1104.50
-            case .JPY : return 10.92
-            case .EUR : return 1236.76
-            case .GBP : return 1435.74
-            case .CNY : return 166.31
+            case .USD : return currencyArray[0]
+            case .JPY : return currencyArray[1]
+            case .EUR : return currencyArray[2]
+            case .GBP : return currencyArray[3]
+            case .CNY : return currencyArray[4]
             }
         }
     }
@@ -88,38 +89,6 @@ enum Currency:Int{
             }
         }
     }
-    
-    
-    
-    func refreshCurrency() {
-        let lotteURL = NSURL(string: "http://api.fixer.io/latest?symbols=USD,KRW")
-        
-        do {
-            let jsonData =  try NSData(contentsOfURL:lotteURL!)
-            //print(jsonString)
-            let jsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
-            print(jsonDictionary)
-//            print(jsonDictionary["teamName"])
-//            guard let teamName = jsonDictionary["teamName"] as? String else {
-//                return
-//            }
-//            
-//            let jsonHitters = jsonDictionary["hitters"] as! Array<Dictionary<String,String>>
-//            var hitterObjArray:[Hitter] = []
-//            for hitter in jsonHitters {
-//                let newHitter = Hitter(name:hitter["name"]!)
-//                newHitter.average = Double(hitter["average"]!)!
-//                hitterObjArray += [newHitter]
-//            }
-//            
-//            hitters[teamName] = hitterObjArray
-        } catch {
-            
-        }
-
-    }
-    
-    
     
 }
 

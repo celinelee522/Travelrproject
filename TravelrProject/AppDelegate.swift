@@ -17,13 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let lotteURL = NSURL(string: "http://api.fixer.io/latest?symbols=USD,KRW")
+        let usdUrl = NSURL(string: "http://api.fixer.io/latest?base=USD")
+        let jpyUrl = NSURL(string: "http://api.fixer.io/latest?base=JPY")
+        let eurUrl = NSURL(string: "http://api.fixer.io/latest?base=EUR")
+        let gbpUrl = NSURL(string: "http://api.fixer.io/latest?base=GBP")
+        let cnyUrl = NSURL(string: "http://api.fixer.io/latest?base=CNY")
+        
         
         do {
-            let jsonData =  try NSData(contentsOfURL:lotteURL!)
+            let usdJsonData =  NSData(contentsOfURL: usdUrl!)
+            let jpyJsonData =  NSData(contentsOfURL: jpyUrl!)
+            let eurJsonData =  NSData(contentsOfURL: eurUrl!)
+            let gbpJsonData =  NSData(contentsOfURL: gbpUrl!)
+            let cnyJsonData =  NSData(contentsOfURL: cnyUrl!)
+            
             //print(jsonString)
-            let jsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
-            print(jsonDictionary)
+            let usdJsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(usdJsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            let jpyJsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(jpyJsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            let eurJsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(eurJsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            let gbpJsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(gbpJsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            let cnyJsonDictionary:NSDictionary = try NSJSONSerialization.JSONObjectWithData(cnyJsonData!, options: .MutableContainers) as! Dictionary<String, AnyObject>
+            
+            let usd = usdJsonDictionary["rates"]!["KRW"]!
+            let jpy = jpyJsonDictionary["rates"]!["KRW"]!
+            let eur = eurJsonDictionary["rates"]!["KRW"]!
+            let gbp = gbpJsonDictionary["rates"]!["KRW"]!
+            let cny = cnyJsonDictionary["rates"]!["KRW"]!
+
+            
+            
+            print(usd!,jpy!,eur!,gbp!,cny!)
+            
+            currencyArray = [Double(usd! as! NSNumber),Double(jpy! as! NSNumber),Double(eur! as! NSNumber),Double(gbp! as! NSNumber),Double(cny! as! NSNumber)]
+            
         } catch {
             
         }
