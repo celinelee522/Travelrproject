@@ -14,18 +14,18 @@ class BudgetPopupViewController: UIViewController {
 
     func showAnimate(){
         
-        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 0.0;
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
-            self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         });
     }
     
     func removeAnimate(){
         
-        UIView.animateWithDuration(0.25, animations: {
-            self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0.0;
             }, completion: {(finished :Bool) in
                 if (finished)
@@ -38,7 +38,7 @@ class BudgetPopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         self.showAnimate()
         // Do any additional setup after loading the view.
@@ -49,11 +49,11 @@ class BudgetPopupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closePopup(sender: AnyObject) {
+    @IBAction func closePopup(_ sender: AnyObject) {
         
         //self.view.removeFromSuperview()
         
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         
         self.removeAnimate()
     }
@@ -65,13 +65,13 @@ class BudgetPopupViewController: UIViewController {
     @IBOutlet weak var cashMoney: UITextField!
     
     //세그먼트 누르는 동시에 바뀜
-    @IBAction func currencySelect(sender: AnyObject) {
+    @IBAction func currencySelect(_ sender: AnyObject) {
         
         for i in 0...3{
             
             if currencySelect.selectedSegmentIndex == i {
                 
-                cashCurrencyChoice.text = currencySelect.titleForSegmentAtIndex(i)
+                cashCurrencyChoice.text = currencySelect.titleForSegment(at: i)
                 
             }
         }

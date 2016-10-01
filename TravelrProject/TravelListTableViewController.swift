@@ -24,7 +24,7 @@ class TravelListTableViewController: UITableViewController {
     
     
     //여행추가 및 저장 하여 테이블뷰 다시 보여주는 함수
-    func addNew(newTravel:TravelWhere) {
+    func addNew(_ newTravel:TravelWhere) {
         
         dataCenter.travels.append(newTravel)
         
@@ -33,13 +33,13 @@ class TravelListTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     
-    @IBAction func toTravelList(unwind:UIStoryboardSegue){
+    @IBAction func toTravelList(_ unwind:UIStoryboardSegue){
         
         self.tableView.reloadData()
         
@@ -55,21 +55,21 @@ class TravelListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return dataCenter.travels.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("travelListView", forIndexPath: indexPath) as! TravelContentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "travelListView", for: indexPath) as! TravelContentTableViewCell
 
-        let travelItem = dataCenter.travels[indexPath.row]
+        let travelItem = dataCenter.travels[(indexPath as NSIndexPath).row]
         
         cell.travelTitle.text = travelItem.title
         cell.travelPeriod.text = travelItem.period
@@ -87,16 +87,16 @@ class TravelListTableViewController: UITableViewController {
     }
     */
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            dataCenter.travels.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dataCenter.travels.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
             dataCenter.save()
             
             self.tableView.reloadData()
             
-        } else if editingStyle == .Insert {
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
@@ -120,18 +120,18 @@ class TravelListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
         if segue.identifier == "mainSegue" {
             //목적지 뷰 컨트롤러 확보
-            let destVC = segue.destinationViewController as! MainViewController
+            let destVC = segue.destination as! MainViewController
             
             //테이블 뷰에서 선택된 오브젝트 확보
-            let selectedIndex:NSIndexPath = self.tableView.indexPathForSelectedRow!
+            let selectedIndex:IndexPath = self.tableView.indexPathForSelectedRow!
             
-            let indexOfTravel = selectedIndex.row
-            let travelTitle = dataCenter.travels[selectedIndex.row].title
+            let indexOfTravel = (selectedIndex as NSIndexPath).row
+            let travelTitle = dataCenter.travels[(selectedIndex as NSIndexPath).row].title
             
             //목적지 뷰 컨트롤러에 선택된 오브젝트 전달
             destVC.travelIndex = indexOfTravel

@@ -62,18 +62,18 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
     
-    @IBAction func currencySetting(sender: AnyObject) {
+    @IBAction func currencySetting(_ sender: AnyObject) {
         
         for i in 0...1{
             
             if currency.selectedSegmentIndex == i {
                 
-                currencyLabel.text = currency.titleForSegmentAtIndex(i)
+                currencyLabel.text = currency.titleForSegment(at: i)
                 
             }
         }
@@ -81,18 +81,18 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     }
 
     
-    @IBAction func loadingImgView(sender: AnyObject) {
+    @IBAction func loadingImgView(_ sender: AnyObject) {
         
-        if(UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
+        if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
             flagImageSave = false
             
             
             imagePicker.delegate = self
-            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.sourceType = .photoLibrary
             imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.allowsEditing = true
             
-            presentViewController(imagePicker, animated: true, completion: nil)
+            present(imagePicker, animated: true, completion: nil)
         }
             
         else {
@@ -103,11 +103,11 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
-        if mediaType.isEqualToString(kUTTypeImage as NSString as String){
+        if mediaType.isEqual(to: kUTTypeImage as NSString as String){
             
             captureImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             
@@ -119,27 +119,27 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
             
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         
         
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // 이미지 경고창띄우는것
-    func imageAlert(title: String, message:String){
+    func imageAlert(_ title: String, message:String){
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.Alert)
-        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func getPay(input:String) -> Int {
+    func getPay(_ input:String) -> Int {
         
         if input == "card" {
             return 0
@@ -151,12 +151,12 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     }
     
     
-    @IBAction func openCameraButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+    @IBAction func openCameraButton(_ sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
             imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
@@ -182,10 +182,10 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
             itemImage.image = item.photo
             date.text = item.ItemDate()
             numOfPeople.text = String(item.numberOfPerson)
-            currency.setTitle(dataCenter.travels[travelIndex!].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
-            currency.setTitle(dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
+            currency.setTitle(dataCenter.travels[travelIndex!].initCardBudget.BudgetCurrency.symbol,forSegmentAt: 1)
+            currency.setTitle(dataCenter.travels[travelIndex!].initCashBudget[0].BudgetCurrency.symbol,forSegmentAt: 0)
             
-            currencyLabel.text = currency.titleForSegmentAtIndex(currency.selectedSegmentIndex)
+            currencyLabel.text = currency.titleForSegment(at: currency.selectedSegmentIndex)
             
             shoppingImage.image = UIImage(named: "shopping")
             transportImage.image = UIImage(named: "transport")
@@ -223,7 +223,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         }
     }
     
-    @IBAction func eatingCategory(sender: AnyObject) {
+    @IBAction func eatingCategory(_ sender: AnyObject) {
         
         categorySelect = 0
         eatingImage.image = UIImage(named: "dining_sel")
@@ -235,7 +235,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         
     }
     
-    @IBAction func sleepingCategory(sender: AnyObject) {
+    @IBAction func sleepingCategory(_ sender: AnyObject) {
         
         categorySelect = 1
         sleepingImage.image = UIImage(named:"hotel_sel")
@@ -246,7 +246,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         
     }
     
-    @IBAction func transportCategory(sender: AnyObject) {
+    @IBAction func transportCategory(_ sender: AnyObject) {
         
         categorySelect = 2
         transportImage.image = UIImage(named: "transport_sel")
@@ -257,7 +257,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         
     }
     
-    @IBAction func shoppingCategory(sender: AnyObject) {
+    @IBAction func shoppingCategory(_ sender: AnyObject) {
         
         categorySelect = 3
         shoppingImage.image = UIImage(named: "shopping_sel")
@@ -268,7 +268,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         
     }
     
-    @IBAction func etcCategory(sender: AnyObject) {
+    @IBAction func etcCategory(_ sender: AnyObject) {
         
         categorySelect = 4
         etcImage.image = UIImage(named: "etc_sel")
@@ -301,9 +301,9 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
             }
             
             editItem.photo = itemImage.image
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy.MM.dd"
-            editItem.date = dateFormatter.dateFromString(date.text!)!
+            editItem.date = dateFormatter.date(from: date.text!)!
             
             dataCenter.travels[travelIndex!].items![itemIndex!] = editItem
 
@@ -312,7 +312,7 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
         dataCenter.save()
     }
     // datepicker
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.pickUpDate(self.date)
         return true
     }
@@ -322,14 +322,14 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     }
  
     // MARK : Touch event
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         closeKeyBoard()
     }
     
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -337,36 +337,36 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     
     
     //MARK:- Function of datePicker
-    func pickUpDate(textField : UITextField){
+    func pickUpDate(_ textField : UITextField){
         
         // DatePicker
-        self.datePicker = UIDatePicker(frame:CGRectMake(0, 0, self.view.frame.size.width, 216))
-        self.datePicker.backgroundColor = UIColor.whiteColor()
-        self.datePicker.datePickerMode = UIDatePickerMode.Date
+        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        self.datePicker.backgroundColor = UIColor.white
+        self.datePicker.datePickerMode = UIDatePickerMode.date
         textField.inputView = self.datePicker
         
         // ToolBar
         let toolBar = UIToolbar()
-        toolBar.barStyle = .Default
-        toolBar.translucent = true
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
         toolBar.tintColor = UIColor(red: 215/255, green: 30/255, blue: 46/255, alpha: 1)
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(ItemEditViewController.doneClick))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(ItemEditViewController.cancelClick))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ItemEditViewController.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ItemEditViewController.cancelClick))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.userInteractionEnabled = true
+        toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
         
     }
     
     // MARK:- Button Done and Cancel
     func doneClick() {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        date.text = formatter.stringFromDate(datePicker.date) //string
+        date.text = formatter.string(from: datePicker.date) //string
         date.resignFirstResponder()
     }
     func cancelClick() {
@@ -378,12 +378,12 @@ class ItemEditViewController: UIViewController,UITextFieldDelegate,UIImagePicker
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
         if segue.identifier == "itemEditSegue" {
             
-            let destVC = segue.destinationViewController as! ItemListTableViewController
+            let destVC = segue.destination as! ItemListTableViewController
             
             self.editingItem()
             

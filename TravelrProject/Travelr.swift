@@ -16,14 +16,14 @@ class TravelData {
     var travels:[TravelWhere] = []
     
     var filePath:String { get{
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         return documentDirectory + "/" + fileName
         }}
     
     init() {
-        if NSFileManager.defaultManager().fileExistsAtPath(self.filePath) {
+        if FileManager.default.fileExists(atPath: self.filePath) {
             //read
-            if let unarchArray = NSKeyedUnarchiver.unarchiveObjectWithFile(self.filePath) as? [TravelWhere] {
+            if let unarchArray = NSKeyedUnarchiver.unarchiveObject(withFile: self.filePath) as? [TravelWhere] {
                 travels += unarchArray
             }
         } else {
@@ -62,17 +62,17 @@ class TravelData {
 var currencyArray:Array<Double> = []
 
 enum Currency:Int{
-    case KRW = 0, USD, JPY, EUR, GBP, CNY
+    case krw = 0, usd, jpy, eur, gbp, cny
     
     var ratio:Double { // 원화로의 환율
         get{
             switch self {
-            case .KRW : return 1.0
-            case .USD : return currencyArray[0]
-            case .JPY : return currencyArray[1]
-            case .EUR : return currencyArray[2]
-            case .GBP : return currencyArray[3]
-            case .CNY : return currencyArray[4]
+            case .krw : return 1.0
+            case .usd : return currencyArray[0]
+            case .jpy : return currencyArray[1]
+            case .eur : return currencyArray[2]
+            case .gbp : return currencyArray[3]
+            case .cny : return currencyArray[4]
             }
         }
     }
@@ -80,12 +80,12 @@ enum Currency:Int{
     var symbol:String {
         get{
             switch self {
-            case .KRW : return "₩"
-            case .USD : return "$"
-            case .JPY : return "¥"
-            case .EUR : return "€"
-            case .GBP : return "£"
-            case .CNY : return "元"
+            case .krw : return "₩"
+            case .usd : return "$"
+            case .jpy : return "¥"
+            case .eur : return "€"
+            case .gbp : return "£"
+            case .cny : return "元"
             }
         }
     }
@@ -95,7 +95,7 @@ enum Currency:Int{
 
 
 //category설정
-func setCategory(n:Int) -> (String) {
+func setCategory(_ n:Int) -> (String) {
     let categories:Array<String> = ["eating" ,"sleeping", "transport", "shopping", "etc"] // <- 나중에 아이콘으로 표시할시에 img파일로 받는 것으로 바꿔줘야함
     let category = categories[n]
     return category
@@ -105,7 +105,7 @@ func setCategory(n:Int) -> (String) {
 
 
 //card,cash 설정
-func setPay(n:Int) -> (String) {
+func setPay(_ n:Int) -> (String) {
     let pays:Array<String> = ["card" , "cash"]
     let pay = pays[n]
     return pay
@@ -130,18 +130,18 @@ class Budget:NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         
-        self.CardOrCash = aDecoder.decodeObjectForKey("CardOrCash") as! String
-        self.Money = aDecoder.decodeObjectForKey("Money") as! Double
-        self.BudgetCurrency = Currency(rawValue: aDecoder.decodeIntegerForKey("BudgetCurrency"))!
+        self.CardOrCash = aDecoder.decodeObject(forKey: "CardOrCash") as! String
+        self.Money = aDecoder.decodeObject(forKey: "Money") as! Double
+        self.BudgetCurrency = Currency(rawValue: aDecoder.decodeInteger(forKey: "BudgetCurrency"))!
        
         
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
         
-        aCoder.encodeObject(self.CardOrCash, forKey: "CardOrCash")
-        aCoder.encodeObject(self.Money, forKey: "Money")
-        aCoder.encodeInteger(self.BudgetCurrency.rawValue, forKey: "BudgetCurrency")
+        aCoder.encode(self.CardOrCash, forKey: "CardOrCash")
+        aCoder.encode(self.Money, forKey: "Money")
+        aCoder.encode(self.BudgetCurrency.rawValue, forKey: "BudgetCurrency")
         
     }
     
@@ -178,30 +178,30 @@ class TravelWhere:NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         
-        self.title = aDecoder.decodeObjectForKey("title") as! String
-        self.period = aDecoder.decodeObjectForKey("period") as! String
-        self.background = aDecoder.decodeObjectForKey("background") as? UIImage
-        self.plan = aDecoder.decodeObjectForKey("plan") as? String
-        self.items = aDecoder.decodeObjectForKey("items") as? [Item]
+        self.title = aDecoder.decodeObject(forKey: "title") as! String
+        self.period = aDecoder.decodeObject(forKey: "period") as! String
+        self.background = aDecoder.decodeObject(forKey: "background") as? UIImage
+        self.plan = aDecoder.decodeObject(forKey: "plan") as? String
+        self.items = aDecoder.decodeObject(forKey: "items") as? [Item]
         
-        self.initCardBudget = aDecoder.decodeObjectForKey("initCardBudget") as! Budget
-        self.initCashBudget = aDecoder.decodeObjectForKey("initCashBudget") as! [Budget]
-        self.periodStart = aDecoder.decodeObjectForKey("periodStart") as? String
-        self.periodEnd = aDecoder.decodeObjectForKey("periodEnd") as? String
+        self.initCardBudget = aDecoder.decodeObject(forKey: "initCardBudget") as! Budget
+        self.initCashBudget = aDecoder.decodeObject(forKey: "initCashBudget") as! [Budget]
+        self.periodStart = aDecoder.decodeObject(forKey: "periodStart") as? String
+        self.periodEnd = aDecoder.decodeObject(forKey: "periodEnd") as? String
         
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
         
-        aCoder.encodeObject(self.title, forKey: "title")
-        aCoder.encodeObject(self.period, forKey: "period")
-        aCoder.encodeObject(self.background, forKey: "background")
-        aCoder.encodeObject(self.plan, forKey: "plan")
-        aCoder.encodeObject(self.items, forKey: "items")
-        aCoder.encodeObject(self.initCardBudget, forKey: "initCardBudget")
-        aCoder.encodeObject(self.initCashBudget, forKey: "initCashBudget")
-        aCoder.encodeObject(self.periodStart, forKey: "periodStart")
-        aCoder.encodeObject(self.periodEnd, forKey: "periodEnd")
+        aCoder.encode(self.title, forKey: "title")
+        aCoder.encode(self.period, forKey: "period")
+        aCoder.encode(self.background, forKey: "background")
+        aCoder.encode(self.plan, forKey: "plan")
+        aCoder.encode(self.items, forKey: "items")
+        aCoder.encode(self.initCardBudget, forKey: "initCardBudget")
+        aCoder.encode(self.initCashBudget, forKey: "initCashBudget")
+        aCoder.encode(self.periodStart, forKey: "periodStart")
+        aCoder.encode(self.periodEnd, forKey: "periodEnd")
         
     }
     
@@ -228,7 +228,7 @@ class TravelWhere:NSObject, NSCoding {
     
     // 2. 지불수단별로 아이템들 계산하여 카드쓴돈, 현금쓴돈, 카드남은돈, 현금남은돈 ( 인풋으로 기준 화폐단위 넣어주면 분류해서 아웃풋줌)
     
-    func MoneyByPayCurrency(indexCurrency:Currency) -> (cardSpend:Double, cashSpend:Double, cardRemian:Double, cashRemain:Double){
+    func MoneyByPayCurrency(_ indexCurrency:Currency) -> (cardSpend:Double, cashSpend:Double, cardRemian:Double, cashRemain:Double){
         var cardspend:Double = 0
         var cashspend:Double = 0
         
@@ -267,7 +267,7 @@ class Item:NSObject, NSCoding {
     var currency : Currency
     var pay : String
     var category : String // 나중에 radio button 이나 아이콘선택으로 대체
-    var date = NSDate() // 현재시간 받기 <- 초기선택은 현재 년,월,일이고 데이트피커로 선택해 넣기
+    var date = Date() // 현재시간 받기 <- 초기선택은 현재 년,월,일이고 데이트피커로 선택해 넣기
     var numberOfPerson : Int // 피커로 인원수 받기
     var photo : UIImage?
     var detail : String?
@@ -284,25 +284,25 @@ class Item:NSObject, NSCoding {
     
     
     required init?(coder aDecoder: NSCoder) {
-        self.price = aDecoder.decodeObjectForKey("price") as! Double
-        self.currency = Currency(rawValue: aDecoder.decodeIntegerForKey("currency"))!
-        self.pay = aDecoder.decodeObjectForKey("pay") as! String
-        self.category = aDecoder.decodeObjectForKey("category") as! String
-        self.numberOfPerson = aDecoder.decodeObjectForKey("numberOfPerson") as! Int
-        self.photo = aDecoder.decodeObjectForKey("photo") as? UIImage
-        self.detail = aDecoder.decodeObjectForKey("detail") as? String
-        self.date = aDecoder.decodeObjectForKey("date") as! NSDate
+        self.price = aDecoder.decodeObject(forKey: "price") as! Double
+        self.currency = Currency(rawValue: aDecoder.decodeInteger(forKey: "currency"))!
+        self.pay = aDecoder.decodeObject(forKey: "pay") as! String
+        self.category = aDecoder.decodeObject(forKey: "category") as! String
+        self.numberOfPerson = aDecoder.decodeObject(forKey: "numberOfPerson") as! Int
+        self.photo = aDecoder.decodeObject(forKey: "photo") as? UIImage
+        self.detail = aDecoder.decodeObject(forKey: "detail") as? String
+        self.date = aDecoder.decodeObject(forKey: "date") as! Date
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.price, forKey: "price")
-        aCoder.encodeInteger(self.currency.rawValue, forKey: "currency")
-        aCoder.encodeObject(self.pay, forKey: "pay")
-        aCoder.encodeObject(self.category, forKey: "category")
-        aCoder.encodeObject(self.numberOfPerson, forKey: "numberOfPerson")
-        aCoder.encodeObject(self.photo, forKey: "photo")
-        aCoder.encodeObject(self.detail, forKey: "detail")
-        aCoder.encodeObject(self.date, forKey: "date")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.price, forKey: "price")
+        aCoder.encode(self.currency.rawValue, forKey: "currency")
+        aCoder.encode(self.pay, forKey: "pay")
+        aCoder.encode(self.category, forKey: "category")
+        aCoder.encode(self.numberOfPerson, forKey: "numberOfPerson")
+        aCoder.encode(self.photo, forKey: "photo")
+        aCoder.encode(self.detail, forKey: "detail")
+        aCoder.encode(self.date, forKey: "date")
         
     }
     
@@ -310,9 +310,9 @@ class Item:NSObject, NSCoding {
     
     func ItemDate() -> String{
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        let itemdate:String = formatter.stringFromDate(date)
+        let itemdate:String = formatter.string(from: date)
         
         return itemdate
         

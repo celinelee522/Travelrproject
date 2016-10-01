@@ -41,12 +41,12 @@ class ItemListTableViewController: UITableViewController {
         
     }
     
-    @IBAction func toitemList(unwind:UIStoryboardSegue){
+    @IBAction func toitemList(_ unwind:UIStoryboardSegue){
     }
 
     
     
-    func getCategory(input:String) -> String {
+    func getCategory(_ input:String) -> String {
         
         if input == "eating" {
             return "dining"
@@ -66,7 +66,7 @@ class ItemListTableViewController: UITableViewController {
         
     }
     
-    func getPay(input:String) -> String {
+    func getPay(_ input:String) -> String {
         
         if input == "card" {
             return "card"
@@ -85,13 +85,13 @@ class ItemListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         
@@ -104,17 +104,17 @@ class ItemListTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("itemList", forIndexPath: indexPath) as! ItemListTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemList", for: indexPath) as! ItemListTableViewCell
         
         if let itemlist = dataCenter.travels[travelindex!].items{
             
             
-            cell.detail.text = itemlist[indexPath.row].detail
-            cell.category.image = UIImage(named:getCategory(itemlist[indexPath.row].category))
-            cell.pay.image = UIImage(named:getPay(itemlist[indexPath.row].pay))
-            cell.currency.text = itemlist[indexPath.row].currency.symbol
-            cell.price.text = String(itemlist[indexPath.row].price)
+            cell.detail.text = itemlist[(indexPath as NSIndexPath).row].detail
+            cell.category.image = UIImage(named:getCategory(itemlist[(indexPath as NSIndexPath).row].category))
+            cell.pay.image = UIImage(named:getPay(itemlist[(indexPath as NSIndexPath).row].pay))
+            cell.currency.text = itemlist[(indexPath as NSIndexPath).row].currency.symbol
+            cell.price.text = String(itemlist[(indexPath as NSIndexPath).row].price)
    
         }
         
@@ -139,16 +139,16 @@ class ItemListTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            dataCenter.travels[travelindex!].items!.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dataCenter.travels[travelindex!].items!.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
             dataCenter.save()
             
             self.tableView.reloadData()
             
-        } else if editingStyle == .Insert {
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
@@ -172,15 +172,15 @@ class ItemListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "itemEditSegue" {
             
-            let destVC = segue.destinationViewController as! ItemEditViewController
+            let destVC = segue.destination as! ItemEditViewController
             
-            let selectedIndex:NSIndexPath = self.tableView.indexPathForSelectedRow!
-            let indexOfItem = selectedIndex.row
-            let itemTitle = dataCenter.travels[travelindex!].items![selectedIndex.row].detail
+            let selectedIndex:IndexPath = self.tableView.indexPathForSelectedRow!
+            let indexOfItem = (selectedIndex as NSIndexPath).row
+            let itemTitle = dataCenter.travels[travelindex!].items![(selectedIndex as NSIndexPath).row].detail
             destVC.itemTitle = itemTitle
             destVC.itemIndex = indexOfItem
             destVC.travelIndex = travelindex

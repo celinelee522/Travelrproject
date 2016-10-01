@@ -54,7 +54,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     var categorySelect:Int = 0
     
     
-    @IBAction func toMainAfterEdit(unwind:UIStoryboardSegue){
+    @IBAction func toMainAfterEdit(_ unwind:UIStoryboardSegue){
         
     }
     
@@ -72,7 +72,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.budgetView()
         priceSet.text = ""
@@ -86,7 +86,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    @IBAction func toMainView(unwind:UIStoryboardSegue){
+    @IBAction func toMainView(_ unwind:UIStoryboardSegue){
         self.budgetView()
     }
     
@@ -118,8 +118,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             cardUsedTotal.text = "(합계 : 약 \(String(cardUsedWonTotal)))"
             cardBudget.text = String(cardRemainWon)
             
-            currencySegment.setTitle(dataCenter.travels[index].initCardBudget.BudgetCurrency.symbol,forSegmentAtIndex: 1)
-            currencySegment.setTitle(dataCenter.travels[index].initCashBudget[0].BudgetCurrency.symbol,forSegmentAtIndex: 0)
+            currencySegment.setTitle(dataCenter.travels[index].initCardBudget.BudgetCurrency.symbol,forSegmentAt: 1)
+            currencySegment.setTitle(dataCenter.travels[index].initCashBudget[0].BudgetCurrency.symbol,forSegmentAt: 0)
             
             shoppingImage.image = UIImage(named: "shopping")
             transportImage.image = UIImage(named: "transport")
@@ -135,7 +135,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func cashPay(sender: AnyObject) {
+    @IBAction func cashPay(_ sender: AnyObject) {
         self.detailSet.resignFirstResponder()
         payCashOrCard = 1
         let new = self.addingitem()
@@ -147,7 +147,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func cardPay(sender: AnyObject) {
+    @IBAction func cardPay(_ sender: AnyObject) {
         self.detailSet.resignFirstResponder()
         payCashOrCard = 0
         let new = self.addingitem()
@@ -159,14 +159,14 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
+        super.touchesBegan(touches, with: event)
     }
     
     
     
-    @IBAction func eatingCategory(sender: AnyObject) {
+    @IBAction func eatingCategory(_ sender: AnyObject) {
         
         categorySelect = 0
         eatingImage.image = UIImage(named: "dining_sel")
@@ -178,7 +178,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func sleepingCategory(sender: AnyObject) {
+    @IBAction func sleepingCategory(_ sender: AnyObject) {
         
         categorySelect = 1
         sleepingImage.image = UIImage(named:"hotel_sel")
@@ -189,7 +189,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    @IBAction func transportCategory(sender: AnyObject) {
+    @IBAction func transportCategory(_ sender: AnyObject) {
         
         categorySelect = 2
         transportImage.image = UIImage(named: "transport_sel")
@@ -200,7 +200,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    @IBAction func shoppingCategory(sender: AnyObject) {
+    @IBAction func shoppingCategory(_ sender: AnyObject) {
         
         categorySelect = 3
         shoppingImage.image = UIImage(named: "shopping_sel")
@@ -211,7 +211,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func etcCategory(sender: AnyObject) {
+    @IBAction func etcCategory(_ sender: AnyObject) {
         
         categorySelect = 4
         etcImage.image = UIImage(named: "etc_sel")
@@ -223,7 +223,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func addNewItem(newItem:Item) {
+    func addNewItem(_ newItem:Item) {
         
         if dataCenter.travels[travelIndex!].items == nil{
             dataCenter.travels[travelIndex!].items = [newItem]
@@ -293,12 +293,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
         if segue.identifier == "itemSegue" {
           
-            let destVC = segue.destinationViewController as! ItemListTableViewController
+            let destVC = segue.destination as! ItemListTableViewController
             
             
             destVC.travelTitle = travelName
@@ -324,7 +324,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         if segue.identifier == "budgetEditSegue"{
             
-            let destVC = segue.destinationViewController as! BudgetEditViewController
+            let destVC = segue.destination as! BudgetEditViewController
             
             destVC.travelIndex = travelIndex
             destVC.titlename = travelName
@@ -340,7 +340,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
 

@@ -43,7 +43,7 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
         cashBudgetSet1.text = String(travelInitial.initCashBudget[0].Money)
         cashBudgetSet2.text = String(travelInitial.initCashBudget[1].Money)
         currencySegment.selectedSegmentIndex = travelInitial.initCashBudget[0].BudgetCurrency.rawValue - 1
-        currencySet.text = currencySegment.titleForSegmentAtIndex(currencySegment.selectedSegmentIndex)
+        currencySet.text = currencySegment.titleForSegment(at: currencySegment.selectedSegmentIndex)
         dateText1.text = travelInitial.periodStart
         dateText2.text = travelInitial.periodEnd
         imgView.image = travelInitial.background
@@ -62,14 +62,14 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     
     // datepicker
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.pickUpDate1(self.dateText1)
         self.pickUpDate2(self.dateText2)
         return true
@@ -80,14 +80,14 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     }
     
     // MARK : Touch event
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         closeKeyBoard()
     }
     
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -95,53 +95,53 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     
     
     //MARK:- Function of datePicker
-    func pickUpDate1(textField : UITextField){
+    func pickUpDate1(_ textField : UITextField){
         
         // DatePicker
-        self.datePicker1 = UIDatePicker(frame:CGRectMake(0, 0, self.view.frame.size.width, 216))
-        self.datePicker1.backgroundColor = UIColor.whiteColor()
-        self.datePicker1.datePickerMode = UIDatePickerMode.Date
+        self.datePicker1 = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        self.datePicker1.backgroundColor = UIColor.white
+        self.datePicker1.datePickerMode = UIDatePickerMode.date
         textField.inputView = self.datePicker1
         
         // ToolBar
         let toolBar = UIToolbar()
-        toolBar.barStyle = .Default
-        toolBar.translucent = true
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
         toolBar.tintColor = UIColor(red: 215/255, green: 30/255, blue: 46/255, alpha: 1)
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(BudgetEditViewController.doneClick1))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(BudgetEditViewController.cancelClick1))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(BudgetEditViewController.doneClick1))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(BudgetEditViewController.cancelClick1))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.userInteractionEnabled = true
+        toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
         
     }
     
     //MARK:- Function of datePicker
-    func pickUpDate2(textField : UITextField){
+    func pickUpDate2(_ textField : UITextField){
         
         // DatePicker
-        self.datePicker2 = UIDatePicker(frame:CGRectMake(0, 0, self.view.frame.size.width, 216))
-        self.datePicker2.backgroundColor = UIColor.whiteColor()
-        self.datePicker2.datePickerMode = UIDatePickerMode.Date
+        self.datePicker2 = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        self.datePicker2.backgroundColor = UIColor.white
+        self.datePicker2.datePickerMode = UIDatePickerMode.date
         textField.inputView = self.datePicker2
         
         // ToolBar
         let toolBar = UIToolbar()
-        toolBar.barStyle = .Default
-        toolBar.translucent = true
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
         toolBar.tintColor = UIColor(red: 215/255, green: 30/255, blue: 46/255, alpha: 1)
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(BudgetEditViewController.doneClick2))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(BudgetEditViewController.cancelClick2))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(BudgetEditViewController.doneClick2))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(BudgetEditViewController.cancelClick2))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.userInteractionEnabled = true
+        toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
         
     }
@@ -149,9 +149,9 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     
     // MARK:- Button Done and Cancel
     func doneClick1() {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        dateText1.text = formatter.stringFromDate(datePicker1.date) //string
+        dateText1.text = formatter.string(from: datePicker1.date) //string
         dateText1.resignFirstResponder()
     }
     func cancelClick1() {
@@ -159,9 +159,9 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func doneClick2() {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        dateText2.text = formatter.stringFromDate(datePicker2.date) //string
+        dateText2.text = formatter.string(from: datePicker2.date) //string
         dateText2.resignFirstResponder()
     }
     func cancelClick2() {
@@ -173,18 +173,18 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var imgView: UIImageView!
     
     
-    @IBAction func loadingImgView(sender: AnyObject) {
+    @IBAction func loadingImgView(_ sender: AnyObject) {
         
-        if(UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
+        if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
             flagImageSave = false
             
             
             imagePicker.delegate = self
-            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.sourceType = .photoLibrary
             imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.allowsEditing = true
             
-            presentViewController(imagePicker, animated: true, completion: nil)
+            present(imagePicker, animated: true, completion: nil)
         }
             
         else {
@@ -195,11 +195,11 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         
-        if mediaType.isEqualToString(kUTTypeImage as NSString as String){
+        if mediaType.isEqual(to: kUTTypeImage as NSString as String){
             
             captureImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             
@@ -211,23 +211,23 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
             
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         
         
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // 이미지 경고창띄우는것
-    func imageAlert(title: String, message:String){
+    func imageAlert(_ title: String, message:String){
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.Alert)
-        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
@@ -235,13 +235,13 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     
     @IBOutlet weak var currencySegment: UISegmentedControl!
     
-    @IBAction func currencySetting(sender: AnyObject) {
+    @IBAction func currencySetting(_ sender: AnyObject) {
         
         for i in 0...4{
             
             if currencySegment.selectedSegmentIndex == i {
                 
-                currencySet.text = currencySegment.titleForSegmentAtIndex(i)
+                currencySet.text = currencySegment.titleForSegment(at: i)
                 
             }
         }
@@ -293,7 +293,7 @@ class BudgetEditViewController: UIViewController, UINavigationControllerDelegate
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "budgetEditSegue" {
             
